@@ -6,9 +6,14 @@ using CodeMonkey.Utils;
 public class Test : MonoBehaviour
 {
     private GridMaker<bool> gridMaker;
+    [SerializeField] int width = 5;
+    [SerializeField] int height = 5;
+    [SerializeField] float cellSize = 10f;
+    [SerializeField] Vector3 originPoint = new Vector3(0,0);
+
     void Start()
     {
-        gridMaker = new GridMaker<bool>(5, 5, 10f, new Vector3(0,0));
+        gridMaker = new GridMaker<bool>(width, height, cellSize, originPoint);
     }
 
     private void Update() {
