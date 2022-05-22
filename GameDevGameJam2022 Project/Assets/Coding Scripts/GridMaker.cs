@@ -5,10 +5,11 @@ using CodeMonkey.Utils;
 
 public class GridMaker<TGridObject>
 {
+    private bool debugText = false;
     private int width;
     private int height;
     private float cellSize;
-    private TGridObject[,] gridArray;
+    private int[,] gridArray;
     private Vector3 originPosition;
     private TextMesh[,] debugTextArray;
 
@@ -20,14 +21,16 @@ public class GridMaker<TGridObject>
         this.cellSize = cellSize;
         this.originPosition = originPosition;
 
-        gridArray = new TGridObject[width,height];
+        gridArray = new int[width,height];
         debugTextArray = new TextMesh[width,height];
+
+        if (!debugText) {return;}
 
         for (int x=0; x<gridArray.GetLength(0); x++)
         {
             for (int y=0; y<gridArray.GetLength(1); y++)
             {
-                debugTextArray[x,y] = UtilsClass.CreateWorldText(gridArray[x,y].ToString(), null, GetWorldPosition(x,y) + new Vector3(cellSize,cellSize)*0.5f, 20, Color.white, TextAnchor.MiddleCenter);
+                debugTextArray[x,y] = UtilsClass.CreateWorldText(gridArray[x,y].ToString(), null, GetWorldPosition(x,y) + new Vector3(cellSize,cellSize)*0.5f, 1, Color.white, TextAnchor.MiddleCenter);
                 Debug.DrawLine(GetWorldPosition(x,y), GetWorldPosition(x,y+1), Color.white, 100f);
                 Debug.DrawLine(GetWorldPosition(x,y), GetWorldPosition(x+1,y), Color.white, 100f);
             }
@@ -47,24 +50,25 @@ public class GridMaker<TGridObject>
         y = Mathf.FloorToInt((worldPosition - originPosition).y / cellSize);
     }
 
-    public void SetValue(int x, int y, TGridObject value)
+    public void SetValue(int x, int y, int value)
     {
         if(x >= 0 && y >= 0 && x < width && y < height) 
         {
             gridArray[x,y] = value;
+            if (!debugText) {return;}
             debugTextArray[x,y].text = gridArray[x,y].ToString();
 
         }
     }
 
-    public void SetValue(Vector3 worldPosition, TGridObject value)
+    public void SetValue(Vector3 worldPosition, int value)
     {
         int x, y;
         GetXY(worldPosition, out x, out y);
         SetValue(x, y, value);
     }
 
-    public TGridObject GetValue(int x, int y)
+    public int GetValue(int x, int y)
     {
         if(x >= 0 && y >= 0 && x < width && y < height)
         {
@@ -72,14 +76,34 @@ public class GridMaker<TGridObject>
         }
         else
         {
-            return default(TGridObject);
+            return default(int);
         }
     }
 
-    public TGridObject GetValue (Vector3 worldPosition)
+    public int GetValue (Vector3 worldPosition)
     {
         int x, y;
         GetXY(worldPosition, out x, out y);
         return GetValue(x,y);
+    }
+
+    public void AddValue(int x, int y, int value)
+    {
+        if(x >= 0 && y >= 0 && x < width && y < height) 
+        {
+            
+            gridArray[x,y] = GetValue(x,y) + value;
+
+            if (!debugText) { return; }
+            debugTextArray[x,y].text = gridArray[x,y].ToString();
+
+        }
+    }
+
+    public void AddValue(Vector3 worldPosition, int value)
+    {
+        int x, y;
+        GetXY(worldPosition, out x, out y);
+        AddValue(x, y, value);
     }
 }

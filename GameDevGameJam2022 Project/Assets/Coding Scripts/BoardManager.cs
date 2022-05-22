@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using CodeMonkey.Utils;
+using CodeMonkey.Utils; //make own code so you can delete this
 
-public class Test : MonoBehaviour
+public class BoardManager : MonoBehaviour
 {
-    private GridMaker<bool> gridMaker;
+    public GridMaker<int> gridMaker;
     [SerializeField] int width = 5;
     [SerializeField] int height = 5;
     [SerializeField] float cellSize = 10f;
@@ -13,20 +13,20 @@ public class Test : MonoBehaviour
 
     void Start()
     {
-        gridMaker = new GridMaker<bool>(width, height, cellSize, originPoint);
+        gridMaker = new GridMaker<int>(width, height, cellSize, originPoint);
     }
 
     private void Update() {
         if (Input.GetMouseButtonDown(0))
         {
-            gridMaker.SetValue(UtilsClass.GetMouseWorldPosition(), true);
+            //gridMaker.AddValue(UtilsClass.GetMouseWorldPosition(),1);
+            
         }
 
         if (Input.GetMouseButtonDown(1))
         {
-            Debug.Log(gridMaker.GetValue(UtilsClass.GetMouseWorldPosition()));
+            //Debug.Log(gridMaker.GetValue(UtilsClass.GetMouseWorldPosition()));
         }
     }
-
     
-}
+} 
