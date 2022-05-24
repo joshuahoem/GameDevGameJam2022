@@ -25,7 +25,7 @@ public class BoardManager : MonoBehaviour
 
         if (Input.GetMouseButtonDown(1))
         {
-            //Debug.Log(gridMaker.GetValue(UtilsClass.GetMouseWorldPosition()));
+            Debug.Log(gridMaker.GetValue(UtilsClass.GetMouseWorldPosition()));
         }
     }
     

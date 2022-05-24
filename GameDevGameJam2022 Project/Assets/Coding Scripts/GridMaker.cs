@@ -55,6 +55,7 @@ public class GridMaker<TGridObject>
         if(x >= 0 && y >= 0 && x < width && y < height) 
         {
             gridArray[x,y] = value;
+            // Debug.Log(gridArray[x,y]);
             if (!debugText) {return;}
             debugTextArray[x,y].text = gridArray[x,y].ToString();
 
@@ -106,4 +107,31 @@ public class GridMaker<TGridObject>
         GetXY(worldPosition, out x, out y);
         AddValue(x, y, value);
     }
+
+    public bool InBounds(int x, int y)
+    {
+        return (x >= 0 && y >= 0 && x < width && y < height);
+    }
+
+    public bool InBounds(Vector3 worldPosition)
+    {
+        int x, y;
+        GetXY(worldPosition, out x, out y); 
+        return InBounds(x,y);
+    }
+
+    public int GetX(Vector3 worldPosition)
+    {
+        int x;
+        x = Mathf.FloorToInt((worldPosition - originPosition).x / cellSize);
+        return x;
+    }
+
+    public int GetY(Vector3 worldPosition)
+    {
+        int y;
+        y = Mathf.FloorToInt((worldPosition - originPosition).y / cellSize);
+        return y;
+    }
+
 }

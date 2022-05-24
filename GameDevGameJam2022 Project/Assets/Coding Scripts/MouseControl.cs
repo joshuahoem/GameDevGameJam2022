@@ -8,6 +8,13 @@ public class MouseControl : MonoBehaviour
     public bool hoverSquareEnabled = false;
     [SerializeField] GameObject hoverTile;
     GameObject tile;
+    GridMaker<int> grid;
+    BoardManager boardManager;
+
+    private void Start() {
+        boardManager = FindObjectOfType<BoardManager>();
+        grid = boardManager.gridMaker;
+    }
 
     private void Update() 
     {
@@ -20,11 +27,12 @@ public class MouseControl : MonoBehaviour
             return; 
         }
 
-        if (tile == null)
+        if (tile == null && grid.InBounds(UtilsClass.GetMouseWorldPosition()))
         {
             tile = Instantiate(hoverTile, RoundVector(UtilsClass.GetMouseWorldPosition()), Quaternion.identity);
         }
 
+        if (tile == null) {return;}
         if (tile.transform.position != RoundVector(UtilsClass.GetMouseWorldPosition()))
         {
             Destroy(tile.gameObject);
