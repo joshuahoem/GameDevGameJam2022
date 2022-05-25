@@ -26,6 +26,8 @@ public class NecroMan : MonoBehaviour
         ShowMoves(false);
         grid.SetValue(currentPosition, 1); // 1 for necromancer
         //Debug.Log(grid.GetX(currentPosition)+ " " + grid.GetY(currentPosition));
+        targetPosition = currentPosition;
+        moved = false;
     }
 
     private void Update() 
