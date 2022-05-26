@@ -10,6 +10,7 @@ public class NecroMan : MonoBehaviour
     [SerializeField] int moveDistance = 3;
     [SerializeField] int pieceValue = 1;
     [SerializeField] int sizeClass = 5;
+    int maxHealth;
     [SerializeField] int attackRange = 1;
     [SerializeField] int attackDamage = 5;
 
@@ -29,16 +30,18 @@ public class NecroMan : MonoBehaviour
     [SerializeField] private Vector3 targetPosition;
     private Vector3 currentPosition;
     List<GameObject> moveTiles = new List<GameObject>();
-    enum Team {Player, Enemy, Neutral}
-    [SerializeField] Team team;
+    public enum Team {Player, Enemy, Neutral}
+    [SerializeField] public Team team;
 
     MouseControl mouseControl;
     BoardManager boardManager;
+    TurnManager turnManager;
     static GridMaker<int> grid;
     
     private void Start() {
         mouseControl = FindObjectOfType<MouseControl>();
         boardManager = FindObjectOfType<BoardManager>();
+        turnManager = FindObjectOfType<TurnManager>();
         grid = boardManager.gridMaker;
         currentPosition = RoundVector(transform.position);
         ShowMoves(false);
@@ -48,6 +51,7 @@ public class NecroMan : MonoBehaviour
         //Debug.Log(grid.GetX(currentPosition)+ " " + grid.GetY(currentPosition));
         targetPosition = currentPosition;
         moved = false;
+        maxHealth = sizeClass;
 
         if (displaySize)
         {
@@ -122,9 +126,6 @@ public class NecroMan : MonoBehaviour
                         
                     }
                     
-                    //deal damage
-                    //display size and update after damage
-                    //identify if it can be attacked
                 }
             }
 
@@ -134,6 +135,9 @@ public class NecroMan : MonoBehaviour
 
     private void OnMouseDown()
     {
+        //determine if can select pieces (is it your turn?)
+        if (turnManager.gameState == TurnManager.GameState.AI) {return;}
+
         //select piece
         if (boardManager.selected) 
         {
@@ -248,6 +252,14 @@ public class NecroMan : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void RegeneratePiece()
+    {
+        if (!canRegenerate) {return;}
+        sizeClass = maxHealth;
+        displayText.GetComponent<TextMeshPro>().SetText(sizeClass.ToString());
+
     }
 
     public static Vector3 GetMouseWorldPosition() 
