@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using CodeMonkey.Utils; //make own code so you can delete this
 using TMPro;
 
 public class NecroMan : MonoBehaviour
@@ -69,7 +68,7 @@ public class NecroMan : MonoBehaviour
             if (!selected) { return; }
 
             
-            targetPosition = RoundVector(UtilsClass.GetMouseWorldPosition());
+            targetPosition = RoundVector(GetMouseWorldPosition());
             if (Vector2.Distance(transform.position, targetPosition)<= 0.5f)
             {
                 targetPosition = transform.position;
@@ -77,17 +76,17 @@ public class NecroMan : MonoBehaviour
             }
 
             //check clicked position
-            if (!grid.InBounds(UtilsClass.GetMouseWorldPosition())) {return;}
+            if (!grid.InBounds(GetMouseWorldPosition())) {return;}
             int x,y;
             x = Mathf.FloorToInt(currentPosition.x);
             y = Mathf.FloorToInt(currentPosition.y);
             if (Mathf.Abs(grid.GetX(targetPosition)-x) > moveDistance || Mathf.Abs(grid.GetY(targetPosition)-y) > moveDistance) {return;}
-            int positionValue = grid.GetValue(UtilsClass.GetMouseWorldPosition());
+            int positionValue = grid.GetValue(GetMouseWorldPosition());
             if (positionValue == 0) //0 is open so move there
             {
                 //move
-                grid.SetValue(UtilsClass.GetMouseWorldPosition(),pieceValue);            //1 for your Necromancer
-               //Debug.Log(grid.GetValue(UtilsClass.GetMouseWorldPosition()));
+                grid.SetValue(GetMouseWorldPosition(),pieceValue);            //1 for your Necromancer
+               //Debug.Log(grid.GetValue(GetMouseWorldPosition()));
 
                 //time to move
                 grid.SetValue(currentPosition, 0); // set old space as available
@@ -250,4 +249,27 @@ public class NecroMan : MonoBehaviour
             }
         }
     }
+
+    public static Vector3 GetMouseWorldPosition() 
+    {
+        Vector3 vec = GetMouseWorldPositionWithZ(Input.mousePosition, Camera.main);
+        vec.z = 0f;
+        return vec;
+    }
+    public static Vector3 GetMouseWorldPositionWithZ() 
+    {
+        return GetMouseWorldPositionWithZ(Input.mousePosition, Camera.main);
+    }
+
+    public static Vector3 GetMouseWorldPositionWithZ(Camera worldCamera) 
+    {
+        return GetMouseWorldPositionWithZ(Input.mousePosition, worldCamera);
+    }
+
+    public static Vector3 GetMouseWorldPositionWithZ(Vector3 screenPosition, Camera worldCamera) 
+    {
+        Vector3 worldPosition = worldCamera.ScreenToWorldPoint(screenPosition);
+        return worldPosition;
+    }
+
 }

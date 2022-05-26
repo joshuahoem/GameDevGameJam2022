@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using CodeMonkey.Utils; //make own code so you can delete this
 
 public class BoardManager : MonoBehaviour
 {
@@ -25,13 +24,13 @@ public class BoardManager : MonoBehaviour
     private void Update() {
         if (Input.GetMouseButtonDown(0))
         {
-            //gridMaker.AddValue(UtilsClass.GetMouseWorldPosition(),1);
+            //gridMaker.AddValue(GetMouseWorldPosition(),1);
             
         }
 
         if (Input.GetMouseButtonDown(1))
         {
-            Debug.Log(gridMaker.GetValue(UtilsClass.GetMouseWorldPosition()));
+            Debug.Log(gridMaker.GetValue(GetMouseWorldPosition()));
         }
     }
 
@@ -47,6 +46,28 @@ public class BoardManager : MonoBehaviour
         GetXY(worldPosition, out x, out y);
         Debug.Log(gridMaker + " " + this.name);
         gridMaker.SetValue(x, y, value);
+    }
+
+    public static Vector3 GetMouseWorldPosition() 
+    {
+        Vector3 vec = GetMouseWorldPositionWithZ(Input.mousePosition, Camera.main);
+        vec.z = 0f;
+        return vec;
+    }
+    public static Vector3 GetMouseWorldPositionWithZ() 
+    {
+        return GetMouseWorldPositionWithZ(Input.mousePosition, Camera.main);
+    }
+
+    public static Vector3 GetMouseWorldPositionWithZ(Camera worldCamera) 
+    {
+        return GetMouseWorldPositionWithZ(Input.mousePosition, worldCamera);
+    }
+
+    public static Vector3 GetMouseWorldPositionWithZ(Vector3 screenPosition, Camera worldCamera) 
+    {
+        Vector3 worldPosition = worldCamera.ScreenToWorldPoint(screenPosition);
+        return worldPosition;
     }
     
 } 
