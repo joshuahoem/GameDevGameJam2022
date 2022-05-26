@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using CodeMonkey.Utils; //make own code so you can delete this
+using TMPro;
 
 public class NecroMan : MonoBehaviour
 {
@@ -23,6 +24,9 @@ public class NecroMan : MonoBehaviour
 
     //Cache
     [SerializeField] GameObject moveOutline;
+    [SerializeField] GameObject attackOutline;
+    [SerializeField] GameObject noMoveOutline;
+    [SerializeField] TextMeshPro displayText;
     [SerializeField] private Vector3 targetPosition;
     private Vector3 currentPosition;
     List<GameObject> moveTiles = new List<GameObject>();
@@ -45,7 +49,13 @@ public class NecroMan : MonoBehaviour
         //Debug.Log(grid.GetX(currentPosition)+ " " + grid.GetY(currentPosition));
         targetPosition = currentPosition;
         moved = false;
+
+        if (displaySize)
+        {
+            displayText.GetComponent<TextMeshPro>().SetText(sizeClass.ToString());
+        }
     }
+
 
     private void Update() 
     {
@@ -94,7 +104,7 @@ public class NecroMan : MonoBehaviour
                 {
                     
                     //identify piece
-                    if (boardManager.selectedToAttack == null) {Debug.Log("TooSlow"); return;}
+                    if (boardManager.selectedToAttack == null) {Debug.Log("TooSlow"); return;} //check list for piece at mouse position ##TODO
                     if (boardManager.selectedToAttack.GetComponent<NecroMan>().team == gameObject.GetComponent<NecroMan>().team)
                     {
                         //same team
@@ -147,7 +157,7 @@ public class NecroMan : MonoBehaviour
     public void TakeDamage(int damage)
     {
         sizeClass -= damage;
-        //display on UI
+        displayText.GetComponent<TextMeshPro>().SetText(sizeClass.ToString());
 
         //check death
         if (sizeClass <= 0)
@@ -210,11 +220,30 @@ public class NecroMan : MonoBehaviour
             {
                 for (int y = (int) (currentPosition.y - moveDistance); y <= (int) (currentPosition.y + moveDistance); y++)
                 {
-                    if (grid.GetValue(x,y) != 0) {continue;}
-                    if (grid.InBounds(x,y))
+                    //skip current space
+                    if (currentPosition == RoundVector(new Vector3(x,y))) { continue; }
+
+                    //check others
+                    if (grid.GetValue(x,y) == 0) //empty
                     {
-                        
-                        GameObject tile = Instantiate(moveOutline, new Vector3 (x + 0.5f,y + 0.5f), Quaternion.identity);
+                        if (grid.InBounds(x,y))
+                        {
+                            //move
+                            GameObject tile = Instantiate(moveOutline, new Vector3 (x + 0.5f,y + 0.5f), Quaternion.identity);
+                            moveTiles.Add(tile);
+                        }
+                    }
+                    else if (grid.GetValue(x,y) == 100) //obstacles
+                    {
+                        //spaces that cannot be moved into
+                        GameObject tile = Instantiate(noMoveOutline, new Vector3 (x + 0.5f,y + 0.5f), Quaternion.identity);
+                        moveTiles.Add(tile);
+                    }
+                    else if (grid.GetValue(x,y) != 0)
+                    {
+                        //attack
+                        if (!canBeAttacked) {continue;} //skip obstacles in case
+                        GameObject tile = Instantiate(attackOutline, new Vector3 (x + 0.5f,y + 0.5f), Quaternion.identity);
                         moveTiles.Add(tile);
                     }
                 }
