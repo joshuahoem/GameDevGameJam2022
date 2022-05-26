@@ -7,6 +7,7 @@ public class BoardManager : MonoBehaviour
     [SerializeField] int width = 5;
     [SerializeField] int height = 5;
     [SerializeField] float cellSize = 10f;
+    [SerializeField] bool debugDisplay = false;
     [SerializeField] Vector3 originPosition = new Vector3(0,0);
 
     //States
@@ -18,7 +19,7 @@ public class BoardManager : MonoBehaviour
 
     void Awake()
     {
-        gridMaker = new GridMaker<int>(width, height, cellSize, originPosition);
+        gridMaker = new GridMaker<int>(width, height, cellSize, originPosition, debugDisplay);
     }
 
     private void Update() {

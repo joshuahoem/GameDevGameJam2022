@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GridMaker<TGridObject>
 {
-    private bool debugText = false;
+    private bool debugDisplay;
     private int width;
     private int height;
     private float cellSize;
@@ -13,17 +13,18 @@ public class GridMaker<TGridObject>
     private TextMesh[,] debugTextArray;
 
 
-    public GridMaker(int width, int height, float cellSize, Vector3 originPosition)
+    public GridMaker(int width, int height, float cellSize, Vector3 originPosition, bool debugDisplay)
     {
         this.width = width;
         this.height = height;
         this.cellSize = cellSize;
         this.originPosition = originPosition;
+        this.debugDisplay = debugDisplay;
 
         gridArray = new int[width,height];
         debugTextArray = new TextMesh[width,height];
 
-        if (!debugText) {return;}
+        if (!debugDisplay) {return;}
 
         for (int x=0; x<gridArray.GetLength(0); x++)
         {
@@ -55,8 +56,8 @@ public class GridMaker<TGridObject>
         {
             gridArray[x,y] = value;
             // Debug.Log(gridArray[x,y]);
-            if (!debugText) {return;}
-            debugTextArray[x,y].text = gridArray[x,y].ToString();
+            if (!debugDisplay) {return;}
+            //debugTextArray[x,y].text = gridArray[x,y].ToString();
 
         }
     }
@@ -94,7 +95,7 @@ public class GridMaker<TGridObject>
             
             gridArray[x,y] = GetValue(x,y) + value;
 
-            if (!debugText) { return; }
+            if (!debugDisplay) { return; }
             debugTextArray[x,y].text = gridArray[x,y].ToString();
 
         }
