@@ -954,6 +954,7 @@ MonoBehaviour:
   pieceValue: 100
   sizeClass: 5
   attackRange: 1
+  attackDamage: 5
   selected: 0
   moved: 1
   canMove: 0
@@ -1189,6 +1190,7 @@ MonoBehaviour:
   pieceValue: 4
   sizeClass: 5
   attackRange: 1
+  attackDamage: 5
   selected: 0
   moved: 1
   canMove: 1
@@ -1421,6 +1423,7 @@ MonoBehaviour:
   pieceValue: 1
   sizeClass: 5
   attackRange: 1
+  attackDamage: 1
   selected: 0
   moved: 1
   canMove: 1
@@ -1495,6 +1498,7 @@ MonoBehaviour:
   cellSize: 1
   originPosition: {x: 0, y: 0, z: 0}
   selected: 0
+  selectedToAttack: {fileID: 0}
 --- !u!4 &1898896169
 Transform:
   m_ObjectHideFlags: 0

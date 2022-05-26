@@ -15,6 +15,7 @@ public class BoardManager : MonoBehaviour
 
     //Cache
     public GridMaker<int> gridMaker;
+    public GameObject selectedToAttack;
 
     void Awake()
     {

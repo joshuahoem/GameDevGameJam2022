@@ -11,6 +11,7 @@ public class NecroMan : MonoBehaviour
     [SerializeField] int pieceValue = 1;
     [SerializeField] int sizeClass = 5;
     [SerializeField] int attackRange = 1;
+    [SerializeField] int attackDamage = 5;
 
     //States
     [SerializeField] public bool selected = false;
@@ -91,9 +92,27 @@ public class NecroMan : MonoBehaviour
                 //check to see if you can attack
                 if (Mathf.Abs(grid.GetX(targetPosition)-x) <= attackRange && Mathf.Abs(grid.GetY(targetPosition)-y) <= attackRange)
                 {
-                    Debug.Log("Attack");
+                    
                     //identify piece
-                    //identify team
+                    if (boardManager.selectedToAttack == null) {Debug.Log("TooSlow"); return;}
+                    if (boardManager.selectedToAttack.GetComponent<NecroMan>().team == gameObject.GetComponent<NecroMan>().team)
+                    {
+                        //same team
+                        //unselect my piece?
+                    }
+                    else
+                    {
+                        //different teams
+                        Debug.Log("Attack");
+                        boardManager.selectedToAttack.GetComponent<NecroMan>().TakeDamage(attackDamage);
+
+                        selected = false;
+                        boardManager.selected = false;
+                        mouseControl.hoverSquareEnabled = false;
+                        ShowMoves(false);
+                        
+                    }
+                    
                     //deal damage
                     //display size and update after damage
                     //identify if it can be attacked
@@ -107,7 +126,11 @@ public class NecroMan : MonoBehaviour
     private void OnMouseDown()
     {
         //select piece
-        if (boardManager.selected) {return;}
+        if (boardManager.selected) 
+        {
+            boardManager.selectedToAttack = gameObject;
+            return;
+        }
         if (!canMove) { return; }
         selected = !selected;
         boardManager.selected = selected;
@@ -120,6 +143,26 @@ public class NecroMan : MonoBehaviour
         
         //occurs on first click - make second click for new spot
     }
+
+    public void TakeDamage(int damage)
+    {
+        sizeClass -= damage;
+        //display on UI
+
+        //check death
+        if (sizeClass <= 0)
+        {
+            grid.SetValue(currentPosition, 0);
+            StartCoroutine(DestroyGameObject());
+        }
+    }
+
+    private IEnumerator DestroyGameObject()
+    {
+        yield return new WaitForSeconds(0.1f); //death time
+        Destroy(gameObject);
+    }
+
 
     private void MoveObject()
     {
