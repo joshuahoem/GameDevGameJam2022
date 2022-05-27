@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class TeamManager : MonoBehaviour
 {
-    List<GameObject> playerTeam = new List<GameObject>();
-    List<GameObject> enemyTeam = new List<GameObject>();
-    List<GameObject> neutralTeam = new List<GameObject>();
+    [SerializeField] public List<GameObject> playerTeam = new List<GameObject>();
+    [SerializeField] public List<GameObject> enemyTeam = new List<GameObject>();
+    [SerializeField] public List<GameObject> neutralTeam = new List<GameObject>();
+    [SerializeField] public List<GameObject> allPieces = new List<GameObject>();
     void Start()
     {
         NecroMan[] necroManList = FindObjectsOfType<NecroMan>();
@@ -25,6 +26,8 @@ public class TeamManager : MonoBehaviour
             {
                 neutralTeam.Add(piece.gameObject);
             }
+
+            allPieces.Add(piece.gameObject);
         }
     }
 
@@ -48,5 +51,23 @@ public class TeamManager : MonoBehaviour
         {
             piece.GetComponent<NecroMan>().RegeneratePiece();
         }
+    }
+
+    public void RemovePiece(NecroMan.Team team, GameObject piece)
+    {
+        if (team == NecroMan.Team.Player)
+        {
+            playerTeam.Remove(piece);
+        }
+        else if (team == NecroMan.Team.Enemy)
+        {
+            enemyTeam.Remove(piece);
+        }
+        else if (team == NecroMan.Team.Neutral)
+        {
+            neutralTeam.Remove(piece);
+        }
+
+        allPieces.Remove(piece);
     }
 }

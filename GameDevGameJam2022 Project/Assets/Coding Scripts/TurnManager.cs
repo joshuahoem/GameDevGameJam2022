@@ -35,5 +35,6 @@ public class TurnManager : MonoBehaviour
         }
         turnText.text = gameState.ToString();
         teamManager.RegenerateNeutral();
+        FindObjectOfType<BoardManager>().EndTurn();
     }
 }

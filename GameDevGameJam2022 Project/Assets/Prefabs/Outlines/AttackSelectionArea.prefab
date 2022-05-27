@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5374602790532993074}
   - component: {fileID: 5374602790532993075}
   m_Layer: 0
-  m_Name: MoveSelectionArea
+  m_Name: AttackSelectionArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 410
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0, g: 1, b: 0.13757372, a: 0.41960785}
+  m_Color: {r: 0, g: 0.031219006, b: 1, a: 0.2901961}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

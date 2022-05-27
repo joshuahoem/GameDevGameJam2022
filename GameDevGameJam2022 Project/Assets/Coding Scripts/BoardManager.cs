@@ -16,6 +16,7 @@ public class BoardManager : MonoBehaviour
     //Cache
     public GridMaker<int> gridMaker;
     public GameObject selectedToAttack;
+    public GameObject selectedPiece;
 
     void Awake()
     {
@@ -32,6 +33,18 @@ public class BoardManager : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             Debug.Log(gridMaker.GetValue(GetMouseWorldPosition()));
+        }
+    }
+
+    public void EndTurn()
+    {
+        if (selectedPiece != null)
+        {
+            selectedPiece.GetComponent<NecroMan>().selected = false;
+            selectedPiece.GetComponent<NecroMan>().ShowMoves(false);
+            FindObjectOfType<MouseControl>().hoverSquareEnabled = false;
+            selectedPiece = null;
+            selected = false;
         }
     }
 

@@ -21,11 +21,14 @@ public class NecroMan : MonoBehaviour
     [SerializeField] bool canRegenerate = true;
     [SerializeField] bool canBeAttacked = true;
     [SerializeField] bool displaySize = true;
+    public bool movedThisTurn = false; 
+    public bool attackedThisTurn = false;
 
     //Cache
     [SerializeField] GameObject moveOutline;
     [SerializeField] GameObject attackOutline;
     [SerializeField] GameObject noMoveOutline;
+    [SerializeField] GameObject highlightOutline;
     [SerializeField] TextMeshPro displayText;
     [SerializeField] private Vector3 targetPosition;
     private Vector3 currentPosition;
@@ -36,12 +39,14 @@ public class NecroMan : MonoBehaviour
     MouseControl mouseControl;
     BoardManager boardManager;
     TurnManager turnManager;
+    TeamManager teamManager;
     static GridMaker<int> grid;
     
     private void Start() {
         mouseControl = FindObjectOfType<MouseControl>();
         boardManager = FindObjectOfType<BoardManager>();
         turnManager = FindObjectOfType<TurnManager>();
+        teamManager = FindObjectOfType<TeamManager>();
         grid = boardManager.gridMaker;
         currentPosition = RoundVector(transform.position);
         ShowMoves(false);
@@ -86,7 +91,7 @@ public class NecroMan : MonoBehaviour
             y = Mathf.FloorToInt(currentPosition.y);
             if (Mathf.Abs(grid.GetX(targetPosition)-x) > moveDistance || Mathf.Abs(grid.GetY(targetPosition)-y) > moveDistance) {return;}
             int positionValue = grid.GetValue(GetMouseWorldPosition());
-            if (positionValue == 0) //0 is open so move there
+            if (positionValue == 0 && !movedThisTurn) //0 is open so move there
             {
                 //move
                 grid.SetValue(GetMouseWorldPosition(),pieceValue);            //1 for your Necromancer
@@ -99,6 +104,7 @@ public class NecroMan : MonoBehaviour
                 selected = false;
                 boardManager.selected = false;
                 mouseControl.hoverSquareEnabled = false; //set to false after move, but dont follow mouse anymore
+                movedThisTurn = true;
             }
             else if (positionValue != 0 && positionValue != 100) //100 is obstacles
             {
@@ -106,24 +112,43 @@ public class NecroMan : MonoBehaviour
                 if (Mathf.Abs(grid.GetX(targetPosition)-x) <= attackRange && Mathf.Abs(grid.GetY(targetPosition)-y) <= attackRange)
                 {
                     
-                    //identify piece
-                    if (boardManager.selectedToAttack == null) {Debug.Log("TooSlow"); return;} //check list for piece at mouse position ##TODO
-                    if (boardManager.selectedToAttack.GetComponent<NecroMan>().team == gameObject.GetComponent<NecroMan>().team)
+                    //catch if null and same team
+                    if (boardManager.selectedToAttack == null) 
                     {
-                        //same team
-                        //unselect my piece?
-                    }
-                    else
+                        if (!SameTeam(targetPosition))
+                        {
+                            boardManager.selectedToAttack = PieceAtPosition(GetMouseWorldPosition());
+                        }  
+                    } 
+
+                    if (!SameTeam(targetPosition) && !attackedThisTurn)
                     {
                         //different teams
+                        if (grid.GetValue(targetPosition) == 0) {return;}
                         Debug.Log("Attack");
                         boardManager.selectedToAttack.GetComponent<NecroMan>().TakeDamage(attackDamage);
 
                         selected = false;
                         boardManager.selected = false;
+                        boardManager.selectedPiece = null;
                         mouseControl.hoverSquareEnabled = false;
                         ShowMoves(false);
+                        attackedThisTurn = true;
                         
+                    }
+
+                    if (boardManager.selectedToAttack == null) {return;}
+
+                    if (SameTeam(GetMouseWorldPosition()))
+                    {
+                        //same team
+                        Debug.Log("Same Team");
+                        ShowMoves(false);
+                        boardManager.selectedPiece.GetComponent<NecroMan>().selected = false;
+                        boardManager.selectedPiece = PieceAtPosition(targetPosition);
+                        boardManager.selectedPiece.GetComponent<NecroMan>().ShowMoves(true);
+                        boardManager.selectedPiece.GetComponent<NecroMan>().selected = true;
+
                     }
                     
                 }
@@ -138,8 +163,12 @@ public class NecroMan : MonoBehaviour
         //determine if can select pieces (is it your turn?)
         if (turnManager.gameState == TurnManager.GameState.AI) {return;}
 
+        //do not allow player to move other pieces
+        Team targetPieceTeam = PieceAtPosition(GetMouseWorldPosition()).GetComponent<NecroMan>().team;
+        if (targetPieceTeam == Team.Enemy || targetPieceTeam == Team.Enemy) {return;}
+
         //select piece
-        if (boardManager.selected) 
+        if (boardManager.selected && boardManager.selectedPiece != gameObject) 
         {
             boardManager.selectedToAttack = gameObject;
             return;
@@ -147,6 +176,7 @@ public class NecroMan : MonoBehaviour
         if (!canMove) { return; }
         selected = !selected;
         boardManager.selected = selected;
+        boardManager.selectedPiece = gameObject;
 
         mouseControl.hoverSquareEnabled = selected;
 
@@ -172,6 +202,7 @@ public class NecroMan : MonoBehaviour
 
     private IEnumerator DestroyGameObject()
     {
+        teamManager.RemovePiece(team, gameObject);
         yield return new WaitForSeconds(0.1f); //death time
         Destroy(gameObject);
     }
@@ -205,7 +236,7 @@ public class NecroMan : MonoBehaviour
         
     }
 
-    private void ShowMoves(bool show)
+    public void ShowMoves(bool show)
     {
         
         if(!show)
@@ -223,8 +254,13 @@ public class NecroMan : MonoBehaviour
             {
                 for (int y = (int) (currentPosition.y - moveDistance); y <= (int) (currentPosition.y + moveDistance); y++)
                 {
-                    //skip current space
-                    if (currentPosition == RoundVector(new Vector3(x,y))) { continue; }
+                    //Highlight current space
+                    if (currentPosition == RoundVector(new Vector3(x,y))) 
+                    { 
+                        GameObject tile = Instantiate(highlightOutline, new Vector3 (x + 0.5f,y + 0.5f), Quaternion.identity);
+                        moveTiles.Add(tile);
+                        continue; 
+                    }
 
                     //check others
                     if (grid.GetValue(x,y) == 0) //empty
@@ -232,8 +268,11 @@ public class NecroMan : MonoBehaviour
                         if (grid.InBounds(x,y))
                         {
                             //move
-                            GameObject tile = Instantiate(moveOutline, new Vector3 (x + 0.5f,y + 0.5f), Quaternion.identity);
-                            moveTiles.Add(tile);
+                            if (!movedThisTurn)
+                            {
+                                GameObject tile = Instantiate(moveOutline, new Vector3 (x + 0.5f,y + 0.5f), Quaternion.identity);
+                                moveTiles.Add(tile);
+                            }
                         }
                     }
                     else if (grid.GetValue(x,y) == 100) //obstacles
@@ -245,21 +284,60 @@ public class NecroMan : MonoBehaviour
                     else if (grid.GetValue(x,y) != 0)
                     {
                         //attack
+                        if (attackedThisTurn) {continue;}
                         if (!canBeAttacked) {continue;} //skip obstacles in case
-                        GameObject tile = Instantiate(attackOutline, new Vector3 (x + 0.5f,y + 0.5f), Quaternion.identity);
-                        moveTiles.Add(tile);
+                        
+                        //skip friendly
+                        if (!SameTeam(new Vector3(x,y)))
+                        {
+                            GameObject tile = Instantiate(attackOutline, new Vector3 (x + 0.5f,y + 0.5f), Quaternion.identity);
+                            moveTiles.Add(tile);
+                        }
+                        
                     }
                 }
             }
         }
     }
 
+    private bool SameTeam(Vector3 piecePosition)
+    {
+        foreach (GameObject piece in teamManager.allPieces)
+        {
+            if (RoundVector(piecePosition) == RoundVector(piece.transform.position))
+            {
+                if (piece.GetComponent<NecroMan>().team == team)
+                {
+                    //same team
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    private GameObject PieceAtPosition(Vector3 piecePosition)
+    {
+        foreach (GameObject piece in teamManager.allPieces)
+        {
+            if (RoundVector(piecePosition) == RoundVector(piece.transform.position))
+            {
+                return piece;
+            }
+        }
+
+        Debug.Log("Returned Null");
+        return null;
+    }
+
     public void RegeneratePiece()
     {
+        movedThisTurn = false;
+        attackedThisTurn = false;
         if (!canRegenerate) {return;}
         sizeClass = maxHealth;
         displayText.GetComponent<TextMeshPro>().SetText(sizeClass.ToString());
-
     }
 
     public static Vector3 GetMouseWorldPosition() 
