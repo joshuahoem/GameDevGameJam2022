@@ -1,7 +1,52 @@
 fileFormatVersion: 2
 guid: 00c673e9ec4fd644db242a9288de25d0
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -1786032118633300489
+    second: Bunny-Sheet_0
+  - first:
+      213: 3660430522717924776
+    second: Bunny-Sheet_1
+  - first:
+      213: 6779434083236771019
+    second: Bunny-Sheet_2
+  - first:
+      213: 9027863598633842311
+    second: Bunny-Sheet_3
+  - first:
+      213: 436914190253884600
+    second: Bunny-Sheet_4
+  - first:
+      213: -5066492378996987410
+    second: Bunny-Sheet_5
+  - first:
+      213: 4810411012241514228
+    second: Bunny-Sheet_6
+  - first:
+      213: -8715304599814598758
+    second: Bunny-Sheet_7
+  - first:
+      213: 8157202068048256901
+    second: Bunny-Sheet_8
+  - first:
+      213: 2584097357438124688
+    second: Bunny-Sheet_9
+  - first:
+      213: -5943928461216668582
+    second: Bunny-Sheet_10
+  - first:
+      213: 8646608797167493814
+    second: Bunny-Sheet_11
+  - first:
+      213: 3996685220894017408
+    second: Bunny-Sheet_12
+  - first:
+      213: -1013905761694678995
+    second: Bunny-Sheet_13
+  - first:
+      213: -3011985183430133389
+    second: Bunny-Sheet_14
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -41,7 +86,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -87,9 +132,336 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Bunny-Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 72
+        width: 32
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7fd7c6b304db637e0800000000000000
+      internalID: -1786032118633300489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bunny-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 72
+        width: 32
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ad6997aa267cc230800000000000000
+      internalID: 3660430522717924776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bunny-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 72
+        width: 32
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc4f0853163651e50800000000000000
+      internalID: 6779434083236771019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bunny-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 72
+        width: 32
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 786ff3d7c1a694d70800000000000000
+      internalID: 9027863598633842311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bunny-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 72
+        width: 32
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b40963242b301600800000000000000
+      internalID: 436914190253884600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bunny-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 72
+        width: 32
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee929a4560430b9b0800000000000000
+      internalID: -5066492378996987410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bunny-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 72
+        width: 32
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fe5848345302c240800000000000000
+      internalID: 4810411012241514228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bunny-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 36
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9f09b264a40d0780800000000000000
+      internalID: -8715304599814598758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bunny-Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 36
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58f191bef04343170800000000000000
+      internalID: 8157202068048256901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bunny-Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 36
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 092002ffade8cd320800000000000000
+      internalID: 2584097357438124688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bunny-Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 36
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a54a8da8e8ce28da0800000000000000
+      internalID: -5943928461216668582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bunny-Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 0
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b2afeaa3eceef770800000000000000
+      internalID: 8646608797167493814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bunny-Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 0
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08701767804177730800000000000000
+      internalID: 3996685220894017408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bunny-Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 0
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d208776e412ede1f0800000000000000
+      internalID: -1013905761694678995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bunny-Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 0
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37938e01f674336d0800000000000000
+      internalID: -3011985183430133389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
