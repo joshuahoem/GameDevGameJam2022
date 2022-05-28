@@ -153,9 +153,9 @@ MonoBehaviour:
   minSpeed: 10
   moveDistance: 2
   pieceValue: 4
-  sizeClass: 5
+  sizeClass: 4
   attackRange: 1
-  attackDamage: 5
+  attackDamage: 4
   selected: 0
   moved: 1
   canMove: 1

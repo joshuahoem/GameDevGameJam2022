@@ -7,11 +7,13 @@ using System;
 public class InventorySystem : MonoBehaviour
 {
     private Dictionary<InventoryItemData, InventoryItem> itemDictionary;
-    public List<InventoryItem> inventory  { get; private set; }
+    [SerializeField] public List<InventoryItem> inventory;
+    [SerializeField] private InventoryManager inventoryManager;
     public static InventorySystem current;
 
     private void Awake() 
     {
+        inventoryManager = FindObjectOfType<InventoryManager>();
         inventory = new List<InventoryItem>();
         itemDictionary = new Dictionary<InventoryItemData, InventoryItem>();
         current = this;
@@ -28,23 +30,21 @@ public class InventorySystem : MonoBehaviour
 
     public void Add(InventoryItemData referenceData)
     {
-        Debug.Log(itemDictionary);
-        Debug.Log(referenceData);
-
+        Debug.Log("Add");
         if (itemDictionary.TryGetValue(referenceData, out InventoryItem value))
         {
             value.AddToStack();
-        Debug.Log("2");
-
+            inventoryManager.UpdateInventory(value, true);
         }
         else
         {
             InventoryItem newItem = new InventoryItem(referenceData);
             inventory.Add(newItem);
             itemDictionary.Add(referenceData, newItem);
-        Debug.Log("3");
-
+            Debug.Log("updating inv...");
+            inventoryManager.UpdateInventory(newItem, true);
         }
+
     }
 
     public void Remove(InventoryItemData referenceData)
@@ -59,5 +59,7 @@ public class InventorySystem : MonoBehaviour
                 itemDictionary.Remove(referenceData);
             }
         }
+
+        inventoryManager.UpdateInventory(value, false);
     }
 }

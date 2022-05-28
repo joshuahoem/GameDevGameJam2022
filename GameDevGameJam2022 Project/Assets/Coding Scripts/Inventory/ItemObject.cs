@@ -8,7 +8,6 @@ public class ItemObject : MonoBehaviour
 
     public void Pickup()
     {
-        Debug.Log(referenceItem);
         InventorySystem.current.Add(referenceItem);
     }
 }

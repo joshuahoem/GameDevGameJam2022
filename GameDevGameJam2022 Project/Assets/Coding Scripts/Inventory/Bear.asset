@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 990f34a4bd415a845a945d2a24b7d381, type: 3}
   m_Name: Bear
   m_EditorClassIdentifier: 
-  id: 
-  displayName: 
-  icon: {fileID: 0}
-  prefab: {fileID: 0}
+  id: InventoryItem_Bear
+  displayName: Bear
+  icon: {fileID: -656546871160020268, guid: 84906439906b7b54287721c974e8c132, type: 3}
+  prefab: {fileID: 1223724747564861897, guid: 0458a5f2f844d1d41a91751b9f1b5a65, type: 3}

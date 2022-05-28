@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 990f34a4bd415a845a945d2a24b7d381, type: 3}
   m_Name: Bunny
   m_EditorClassIdentifier: 
-  id: 
-  displayName: 
-  icon: {fileID: 0}
-  prefab: {fileID: 0}
+  id: InventoryItem_Bunny
+  displayName: Bunny
+  icon: {fileID: -1786032118633300489, guid: 00c673e9ec4fd644db242a9288de25d0, type: 3}
+  prefab: {fileID: 689938251514154188, guid: 9c2efb7ab5a3fc34e90a8721280eb9e7, type: 3}
