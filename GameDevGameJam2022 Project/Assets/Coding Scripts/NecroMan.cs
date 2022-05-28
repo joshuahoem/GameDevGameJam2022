@@ -23,8 +23,10 @@ public class NecroMan : MonoBehaviour
     [SerializeField] bool displaySize = true;
     public bool movedThisTurn = false; 
     public bool attackedThisTurn = false;
+    bool corpse = false;
 
     //Cache
+    [SerializeField] GameObject corpsePrefab;
     [SerializeField] GameObject moveOutline;
     [SerializeField] GameObject attackOutline;
     [SerializeField] GameObject noMoveOutline;
@@ -94,7 +96,7 @@ public class NecroMan : MonoBehaviour
             if (positionValue == 0 && !movedThisTurn) //0 is open so move there
             {
                 //move
-                grid.SetValue(GetMouseWorldPosition(),pieceValue);            //1 for your Necromancer
+                grid.SetValue(targetPosition,pieceValue);            //1 for your Necromancer
                //Debug.Log(grid.GetValue(GetMouseWorldPosition()));
 
                 //time to move
@@ -117,13 +119,19 @@ public class NecroMan : MonoBehaviour
                     {
                         if (!SameTeam(targetPosition))
                         {
-                            boardManager.selectedToAttack = PieceAtPosition(GetMouseWorldPosition());
+                            boardManager.selectedToAttack = PieceAtPosition(targetPosition);
                         }  
                     } 
+                    if (SameTeam(targetPosition)) { return; }
 
                     if (!SameTeam(targetPosition) && !attackedThisTurn)
                     {
                         //different teams
+                        if (boardManager.selectedToAttack.GetComponent<NecroMan>().corpse) 
+                        {
+                            //attacking corpse - bring back to life instead ##TODO
+                            return;
+                        } 
                         if (grid.GetValue(targetPosition) == 0) {return;}
                         Debug.Log("Attack");
                         boardManager.selectedToAttack.GetComponent<NecroMan>().TakeDamage(attackDamage);
@@ -131,6 +139,7 @@ public class NecroMan : MonoBehaviour
                         selected = false;
                         boardManager.selected = false;
                         boardManager.selectedPiece = null;
+                        boardManager.selectedToAttack = null;
                         mouseControl.hoverSquareEnabled = false;
                         ShowMoves(false);
                         attackedThisTurn = true;
@@ -190,13 +199,30 @@ public class NecroMan : MonoBehaviour
     public void TakeDamage(int damage)
     {
         sizeClass -= damage;
+        if (sizeClass < 0) {sizeClass = 0;}
         displayText.GetComponent<TextMeshPro>().SetText(sizeClass.ToString());
 
         //check death
         if (sizeClass <= 0)
         {
-            grid.SetValue(currentPosition, 0);
-            StartCoroutine(DestroyGameObject());
+            if (team != Team.Neutral)
+            {
+                grid.SetValue(currentPosition, 0);
+                StartCoroutine(DestroyGameObject());
+            }
+            else 
+            {
+                //Neutral
+                Debug.Log("Neutral");
+                GetComponent<ItemObject>().Pickup();
+                corpse = true;
+                grid.SetValue(currentPosition, 0);
+                StartCoroutine(DestroyGameObject());
+                //animator
+
+                // Instantiate(corpsePrefab, RoundVector(transform.position), Quaternion.identity);
+                // StartCoroutine(DestroyGameObject());
+            }
         }
     }
 

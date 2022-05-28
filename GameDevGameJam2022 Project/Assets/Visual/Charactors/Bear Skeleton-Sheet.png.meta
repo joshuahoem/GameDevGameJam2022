@@ -1,7 +1,70 @@
 fileFormatVersion: 2
 guid: 57123f27b11369e48966c4814dcf802e
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -831549174907155063
+    second: Bear Skeleton-Sheet_0
+  - first:
+      213: -3354538121674004291
+    second: Bear Skeleton-Sheet_1
+  - first:
+      213: -1412837978032962005
+    second: Bear Skeleton-Sheet_2
+  - first:
+      213: -6833404249655250040
+    second: Bear Skeleton-Sheet_3
+  - first:
+      213: -7084758229412413495
+    second: Bear Skeleton-Sheet_4
+  - first:
+      213: 3747193178975040217
+    second: Bear Skeleton-Sheet_5
+  - first:
+      213: 4959640789894848666
+    second: Bear Skeleton-Sheet_6
+  - first:
+      213: 4103183301327468300
+    second: Bear Skeleton-Sheet_7
+  - first:
+      213: -10000336897297265
+    second: Bear Skeleton-Sheet_8
+  - first:
+      213: -608868074920586738
+    second: Bear Skeleton-Sheet_9
+  - first:
+      213: 8032074511926374498
+    second: Bear Skeleton-Sheet_10
+  - first:
+      213: 7112142091393392378
+    second: Bear Skeleton-Sheet_11
+  - first:
+      213: 1111772922406920676
+    second: Bear Skeleton-Sheet_12
+  - first:
+      213: 3774371383931551099
+    second: Bear Skeleton-Sheet_13
+  - first:
+      213: 7633567959945960594
+    second: Bear Skeleton-Sheet_14
+  - first:
+      213: -9207732226236853478
+    second: Bear Skeleton-Sheet_15
+  - first:
+      213: -8111664163814793189
+    second: Bear Skeleton-Sheet_16
+  - first:
+      213: -6844578537500647
+    second: Bear Skeleton-Sheet_17
+  - first:
+      213: 3599252751548194402
+    second: Bear Skeleton-Sheet_18
+  - first:
+      213: 7684983273925534500
+    second: Bear Skeleton-Sheet_19
+  - first:
+      213: 2432319511171366955
+    second: Bear Skeleton-Sheet_20
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -41,7 +104,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -87,9 +150,462 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Bear Skeleton-Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 68
+        width: 33
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98dc3606e6eb574f0800000000000000
+      internalID: -831549174907155063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear Skeleton-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 68
+        width: 33
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db86d18f9594271d0800000000000000
+      internalID: -3354538121674004291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear Skeleton-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 68
+        width: 33
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b260a223857946ce0800000000000000
+      internalID: -1412837978032962005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear Skeleton-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 68
+        width: 36
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88377a43a0fda21a0800000000000000
+      internalID: -6833404249655250040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear Skeleton-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 68
+        width: 36
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9cff8505de1edad90800000000000000
+      internalID: -7084758229412413495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear Skeleton-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 68
+        width: 34
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d2f291c754b00430800000000000000
+      internalID: 3747193178975040217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear Skeleton-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 36
+        width: 33
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a906837650f24d440800000000000000
+      internalID: 4959640789894848666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear Skeleton-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 36
+        width: 33
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0730f3197f61f830800000000000000
+      internalID: 4103183301327468300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear Skeleton-Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 36
+        width: 33
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f843a9f1fb87cdff0800000000000000
+      internalID: -10000336897297265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear Skeleton-Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 36
+        width: 33
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e02584736bddc87f0800000000000000
+      internalID: -608868074920586738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear Skeleton-Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 36
+        width: 33
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26037dc7639a77f60800000000000000
+      internalID: 8032074511926374498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear Skeleton-Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 36
+        width: 33
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afe5b95ec8763b260800000000000000
+      internalID: 7112142091393392378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear Skeleton-Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 36
+        width: 33
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e166fe159fcd6f00800000000000000
+      internalID: 1111772922406920676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear Skeleton-Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 4
+        width: 32
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7db3a5b6c2416430800000000000000
+      internalID: 3774371383931551099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear Skeleton-Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 4
+        width: 33
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29cd16d7d91efe960800000000000000
+      internalID: 7633567959945960594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear Skeleton-Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 4
+        width: 32
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a135c3c2350973080800000000000000
+      internalID: -9207732226236853478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear Skeleton-Sheet_16
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 4
+        width: 32
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b10ad82ab649d6f80800000000000000
+      internalID: -8111664163814793189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear Skeleton-Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 4
+        width: 32
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91092af54eea7eff0800000000000000
+      internalID: -6844578537500647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear Skeleton-Sheet_18
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 4
+        width: 32
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26e90e0de4d13f130800000000000000
+      internalID: 3599252751548194402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear Skeleton-Sheet_19
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 4
+        width: 32
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4236623229b86aa60800000000000000
+      internalID: 7684983273925534500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear Skeleton-Sheet_20
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 4
+        width: 31
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b200f9b55b551c120800000000000000
+      internalID: 2432319511171366955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

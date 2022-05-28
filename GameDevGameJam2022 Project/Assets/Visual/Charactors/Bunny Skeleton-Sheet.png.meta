@@ -1,7 +1,52 @@
 fileFormatVersion: 2
 guid: 3035477ec7e563247b7cc1df350103a7
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -2998617899402373747
+    second: Bunny Skeleton-Sheet_0
+  - first:
+      213: -1328778137774689271
+    second: Bunny Skeleton-Sheet_1
+  - first:
+      213: 1683822357685667976
+    second: Bunny Skeleton-Sheet_2
+  - first:
+      213: -584476591356389087
+    second: Bunny Skeleton-Sheet_3
+  - first:
+      213: -3757902679789397023
+    second: Bunny Skeleton-Sheet_4
+  - first:
+      213: -6303155085058325403
+    second: Bunny Skeleton-Sheet_5
+  - first:
+      213: -7775934307777542164
+    second: Bunny Skeleton-Sheet_6
+  - first:
+      213: 2776371694157835384
+    second: Bunny Skeleton-Sheet_7
+  - first:
+      213: 2702610295308967327
+    second: Bunny Skeleton-Sheet_8
+  - first:
+      213: -3192140766797769552
+    second: Bunny Skeleton-Sheet_9
+  - first:
+      213: -493518854593752053
+    second: Bunny Skeleton-Sheet_10
+  - first:
+      213: 3291219009856703540
+    second: Bunny Skeleton-Sheet_11
+  - first:
+      213: 650016991598286636
+    second: Bunny Skeleton-Sheet_12
+  - first:
+      213: 2741735968712568844
+    second: Bunny Skeleton-Sheet_13
+  - first:
+      213: 93519528670117611
+    second: Bunny Skeleton-Sheet_14
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -41,7 +86,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -87,9 +132,336 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Bunny Skeleton-Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 72
+        width: 31
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d855ef868e4c266d0800000000000000
+      internalID: -2998617899402373747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bunny Skeleton-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 72
+        width: 30
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90472a8e25b3f8de0800000000000000
+      internalID: -1328778137774689271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bunny Skeleton-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 72
+        width: 35
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88807b653832e5710800000000000000
+      internalID: 1683822357685667976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bunny Skeleton-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 72
+        width: 32
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 129dba803a583e7f0800000000000000
+      internalID: -584476591356389087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bunny Skeleton-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 72
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1eb1aa64c6f39dbc0800000000000000
+      internalID: -3757902679789397023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bunny Skeleton-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 72
+        width: 32
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 564c6ee78d1b688a0800000000000000
+      internalID: -6303155085058325403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bunny Skeleton-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 72
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce7852c12f4561490800000000000000
+      internalID: -7775934307777542164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bunny Skeleton-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 36
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87c2ab29857a78620800000000000000
+      internalID: 2776371694157835384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bunny Skeleton-Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 36
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9d543a9eb9918520800000000000000
+      internalID: 2702610295308967327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bunny Skeleton-Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 36
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b4d9f1a2ec33b3d0800000000000000
+      internalID: -3192140766797769552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bunny Skeleton-Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 36
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b045bfd673ba629f0800000000000000
+      internalID: -493518854593752053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bunny Skeleton-Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43c85887042ccad20800000000000000
+      internalID: 3291219009856703540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bunny Skeleton-Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 0
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c271f2a8203550900800000000000000
+      internalID: 650016991598286636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bunny Skeleton-Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 1
+        width: 42
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c003603565a9c0620800000000000000
+      internalID: 2741735968712568844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bunny Skeleton-Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 0
+        width: 42
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: beeb1fd048f3c4100800000000000000
+      internalID: 93519528670117611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
