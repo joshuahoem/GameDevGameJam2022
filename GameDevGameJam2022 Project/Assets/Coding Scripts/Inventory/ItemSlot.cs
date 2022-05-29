@@ -10,10 +10,11 @@ public class ItemSlot : MonoBehaviour
     [SerializeField] public TextMeshProUGUI nameLabel;
     [SerializeField] GameObject stackObject;
     [SerializeField] private TextMeshProUGUI stackLabel;
+    [SerializeField] public InventoryItemData recordedData;
 
-    public void Set(InventoryItem item)
+    public void Set(InventoryItemData referenceData, InventoryItem item)
     {
-        Debug.Log("Setting...");
+        recordedData = referenceData;
         icon.sprite = item.data.icon;
         nameLabel.text = item.data.displayName;
         if (item.stackSize <= 1)
