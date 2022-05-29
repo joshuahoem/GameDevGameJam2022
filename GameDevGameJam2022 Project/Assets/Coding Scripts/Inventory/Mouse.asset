@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 990f34a4bd415a845a945d2a24b7d381, type: 3}
+  m_Name: Mouse
+  m_EditorClassIdentifier: 
+  id: InventoryItem_Mouse
+  displayName: Mouse
+  icon: {fileID: 3273106635956874295, guid: 3525f75c87e84b242baadae276a7a505, type: 3}
+  prefab: {fileID: 992311742031252760, guid: 83988f23434490540939a10ad8f5b67d, type: 3}
