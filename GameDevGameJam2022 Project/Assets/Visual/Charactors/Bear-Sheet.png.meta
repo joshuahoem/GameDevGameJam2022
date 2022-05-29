@@ -65,6 +65,18 @@ TextureImporter:
   - first:
       213: -6769300224134198309
     second: Bear-Sheet_20
+  - first:
+      213: 2561516988968296145
+    second: Bear-Sheet_21
+  - first:
+      213: -8087067567170089212
+    second: Bear-Sheet_22
+  - first:
+      213: -1296947808410676792
+    second: Bear-Sheet_23
+  - first:
+      213: -3563677705588532514
+    second: Bear-Sheet_24
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -169,10 +181,10 @@ TextureImporter:
       name: Bear-Sheet_0
       rect:
         serializedVersion: 2
-        x: 3
-        y: 68
-        width: 32
-        height: 24
+        x: 0
+        y: 64
+        width: 38
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -190,10 +202,10 @@ TextureImporter:
       name: Bear-Sheet_1
       rect:
         serializedVersion: 2
-        x: 40
-        y: 68
-        width: 32
-        height: 24
+        x: 38
+        y: 64
+        width: 38
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -211,10 +223,10 @@ TextureImporter:
       name: Bear-Sheet_2
       rect:
         serializedVersion: 2
-        x: 78
-        y: 68
-        width: 32
-        height: 24
+        x: 76
+        y: 64
+        width: 38
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,34 +241,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bear-Sheet_3
-      rect:
-        serializedVersion: 2
-        x: 114
-        y: 67
-        width: 35
-        height: 25
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: da52aa8196ab35090800000000000000
-      internalID: -8046883148632808019
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Bear-Sheet_4
       rect:
         serializedVersion: 2
         x: 152
-        y: 67
-        width: 36
-        height: 25
+        y: 64
+        width: 38
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -275,9 +266,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 190
-        y: 67
-        width: 36
-        height: 25
+        y: 64
+        width: 38
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -295,10 +286,10 @@ TextureImporter:
       name: Bear-Sheet_6
       rect:
         serializedVersion: 2
-        x: 3
-        y: 36
-        width: 32
-        height: 24
+        x: 0
+        y: 32
+        width: 38
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -316,10 +307,10 @@ TextureImporter:
       name: Bear-Sheet_7
       rect:
         serializedVersion: 2
-        x: 41
-        y: 36
-        width: 32
-        height: 24
+        x: 38
+        y: 32
+        width: 38
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -337,10 +328,10 @@ TextureImporter:
       name: Bear-Sheet_8
       rect:
         serializedVersion: 2
-        x: 79
-        y: 36
-        width: 32
-        height: 24
+        x: 76
+        y: 32
+        width: 38
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -355,34 +346,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bear-Sheet_9
-      rect:
-        serializedVersion: 2
-        x: 117
-        y: 36
-        width: 32
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e3e851fdf967633b0800000000000000
-      internalID: -5533104663163466178
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Bear-Sheet_10
       rect:
         serializedVersion: 2
-        x: 155
-        y: 36
-        width: 32
-        height: 25
+        x: 152
+        y: 32
+        width: 38
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -400,10 +370,10 @@ TextureImporter:
       name: Bear-Sheet_11
       rect:
         serializedVersion: 2
-        x: 193
-        y: 36
-        width: 32
-        height: 25
+        x: 190
+        y: 32
+        width: 38
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -418,34 +388,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bear-Sheet_12
-      rect:
-        serializedVersion: 2
-        x: 231
-        y: 36
-        width: 32
-        height: 25
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c668916ea003952e0800000000000000
-      internalID: -2136623724842350996
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Bear-Sheet_13
       rect:
         serializedVersion: 2
-        x: 4
-        y: 4
-        width: 31
-        height: 24
+        x: 0
+        y: 0
+        width: 38
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -463,10 +412,10 @@ TextureImporter:
       name: Bear-Sheet_14
       rect:
         serializedVersion: 2
-        x: 41
-        y: 4
-        width: 32
-        height: 24
+        x: 38
+        y: 0
+        width: 38
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -484,10 +433,10 @@ TextureImporter:
       name: Bear-Sheet_15
       rect:
         serializedVersion: 2
-        x: 79
-        y: 4
-        width: 32
-        height: 24
+        x: 76
+        y: 0
+        width: 38
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -505,10 +454,10 @@ TextureImporter:
       name: Bear-Sheet_16
       rect:
         serializedVersion: 2
-        x: 117
-        y: 4
-        width: 32
-        height: 24
+        x: 114
+        y: 0
+        width: 38
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -526,10 +475,10 @@ TextureImporter:
       name: Bear-Sheet_17
       rect:
         serializedVersion: 2
-        x: 155
-        y: 4
-        width: 32
-        height: 24
+        x: 152
+        y: 0
+        width: 38
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -547,10 +496,10 @@ TextureImporter:
       name: Bear-Sheet_18
       rect:
         serializedVersion: 2
-        x: 193
-        y: 4
-        width: 32
-        height: 24
+        x: 190
+        y: 0
+        width: 38
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -568,10 +517,10 @@ TextureImporter:
       name: Bear-Sheet_19
       rect:
         serializedVersion: 2
-        x: 231
-        y: 4
-        width: 32
-        height: 24
+        x: 228
+        y: 0
+        width: 38
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -589,10 +538,10 @@ TextureImporter:
       name: Bear-Sheet_20
       rect:
         serializedVersion: 2
-        x: 269
-        y: 4
-        width: 32
-        height: 24
+        x: 266
+        y: 0
+        width: 38
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -602,6 +551,69 @@ TextureImporter:
       bones: []
       spriteID: bdb428abf4d9e02a0800000000000000
       internalID: -6769300224134198309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 64
+        width: 38
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da52aa8196ab35090800000000000000
+      internalID: -8046883148632808019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear-Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 32
+        width: 38
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3e851fdf967633b0800000000000000
+      internalID: -5533104663163466178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear-Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 32
+        width: 38
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c668916ea003952e0800000000000000
+      internalID: -2136623724842350996
       vertices: []
       indices: 
       edges: []

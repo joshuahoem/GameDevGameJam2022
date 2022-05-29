@@ -151,12 +151,12 @@ TextureImporter:
       name: Bunny-Sheet_0
       rect:
         serializedVersion: 2
-        x: 1
+        x: 0
         y: 72
-        width: 32
+        width: 36
         height: 36
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -172,12 +172,12 @@ TextureImporter:
       name: Bunny-Sheet_1
       rect:
         serializedVersion: 2
-        x: 37
+        x: 36
         y: 72
-        width: 32
+        width: 36
         height: 36
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -193,12 +193,12 @@ TextureImporter:
       name: Bunny-Sheet_2
       rect:
         serializedVersion: 2
-        x: 73
+        x: 72
         y: 72
-        width: 32
+        width: 36
         height: 36
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -214,12 +214,12 @@ TextureImporter:
       name: Bunny-Sheet_3
       rect:
         serializedVersion: 2
-        x: 109
+        x: 108
         y: 72
-        width: 32
+        width: 36
         height: 36
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -235,12 +235,12 @@ TextureImporter:
       name: Bunny-Sheet_4
       rect:
         serializedVersion: 2
-        x: 145
+        x: 144
         y: 72
-        width: 32
+        width: 36
         height: 36
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -256,12 +256,12 @@ TextureImporter:
       name: Bunny-Sheet_5
       rect:
         serializedVersion: 2
-        x: 181
+        x: 180
         y: 72
-        width: 32
+        width: 36
         height: 36
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -277,12 +277,12 @@ TextureImporter:
       name: Bunny-Sheet_6
       rect:
         serializedVersion: 2
-        x: 217
+        x: 216
         y: 72
-        width: 32
+        width: 36
         height: 36
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -298,12 +298,12 @@ TextureImporter:
       name: Bunny-Sheet_7
       rect:
         serializedVersion: 2
-        x: 1
+        x: 0
         y: 36
-        width: 32
-        height: 33
+        width: 36
+        height: 36
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -319,12 +319,12 @@ TextureImporter:
       name: Bunny-Sheet_8
       rect:
         serializedVersion: 2
-        x: 37
+        x: 36
         y: 36
-        width: 32
-        height: 33
+        width: 36
+        height: 36
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -340,12 +340,12 @@ TextureImporter:
       name: Bunny-Sheet_9
       rect:
         serializedVersion: 2
-        x: 73
+        x: 72
         y: 36
-        width: 32
-        height: 33
+        width: 36
+        height: 36
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -361,12 +361,12 @@ TextureImporter:
       name: Bunny-Sheet_10
       rect:
         serializedVersion: 2
-        x: 109
+        x: 108
         y: 36
-        width: 32
-        height: 33
+        width: 36
+        height: 36
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -382,12 +382,12 @@ TextureImporter:
       name: Bunny-Sheet_11
       rect:
         serializedVersion: 2
-        x: 1
+        x: 0
         y: 0
-        width: 32
-        height: 34
+        width: 36
+        height: 36
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -403,12 +403,12 @@ TextureImporter:
       name: Bunny-Sheet_12
       rect:
         serializedVersion: 2
-        x: 37
+        x: 36
         y: 0
-        width: 32
-        height: 34
+        width: 36
+        height: 36
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -424,12 +424,12 @@ TextureImporter:
       name: Bunny-Sheet_13
       rect:
         serializedVersion: 2
-        x: 73
+        x: 72
         y: 0
-        width: 32
-        height: 34
+        width: 36
+        height: 36
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -445,12 +445,12 @@ TextureImporter:
       name: Bunny-Sheet_14
       rect:
         serializedVersion: 2
-        x: 109
+        x: 108
         y: 0
-        width: 32
-        height: 34
+        width: 36
+        height: 36
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
