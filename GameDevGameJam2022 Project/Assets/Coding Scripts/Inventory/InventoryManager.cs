@@ -9,7 +9,6 @@ public class InventoryManager : MonoBehaviour
     
     public void UpdateInventory(InventoryItemData passData, InventoryItem item, bool add, int stackSize)
     {
-        Debug.Log(stackSize);
         if (add && stackSize <= 1)
         {
             GameObject newItem = Instantiate(slotPrefab);
