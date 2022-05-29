@@ -4269,6 +4269,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 836624363}
     m_Modifications:
+    - target: {fileID: 1223724747272538375, guid: 0458a5f2f844d1d41a91751b9f1b5a65, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 3273106635956874295, guid: 3525f75c87e84b242baadae276a7a505, type: 3}
     - target: {fileID: 1223724747564861892, guid: 0458a5f2f844d1d41a91751b9f1b5a65, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -4315,7 +4319,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1223724747564861897, guid: 0458a5f2f844d1d41a91751b9f1b5a65, type: 3}
       propertyPath: m_Name
-      value: Bear (1)
+      value: Mouse
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0458a5f2f844d1d41a91751b9f1b5a65, type: 3}
@@ -9266,6 +9270,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bunny
       objectReference: {fileID: 0}
+    - target: {fileID: 689938251682136950, guid: 9c2efb7ab5a3fc34e90a8721280eb9e7, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 786665ed80f82b44e83b5a4620f67b82, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c2efb7ab5a3fc34e90a8721280eb9e7, type: 3}
 --- !u!1001 &1223724748851036236
@@ -9332,6 +9340,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 836624363}
     m_Modifications:
+    - target: {fileID: 6780398029962750981, guid: 1e891938f38f10f4882b49817905c442, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1064823280837814890, guid: ec5056c26b5adf2419858bdba2484619, type: 3}
+    - target: {fileID: 6780398029962750983, guid: 1e891938f38f10f4882b49817905c442, type: 3}
+      propertyPath: m_Name
+      value: Sprite
+      objectReference: {fileID: 0}
     - target: {fileID: 6780398031085577344, guid: 1e891938f38f10f4882b49817905c442, type: 3}
       propertyPath: m_Name
       value: NecroMan
@@ -9382,3 +9398,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e891938f38f10f4882b49817905c442, type: 3}
+--- !u!1 &6780398030304986148 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6780398029962750983, guid: 1e891938f38f10f4882b49817905c442, type: 3}
+  m_PrefabInstance: {fileID: 6780398030304986147}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &6780398030304986149
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6780398030304986148}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 39aba563283caed47b5c6ae424b8f557, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
