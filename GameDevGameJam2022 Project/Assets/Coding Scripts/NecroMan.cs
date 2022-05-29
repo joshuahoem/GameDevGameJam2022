@@ -8,7 +8,7 @@ public class NecroMan : MonoBehaviour
     //Numbers
     [SerializeField] float minSpeed = 10f;
     [SerializeField] int moveDistance = 3;
-    [SerializeField] int pieceValue = 1;
+    [SerializeField] public int pieceValue = 1;
     [SerializeField] int sizeClass = 5;
     int maxHealth;
     [SerializeField] int attackRange = 1;
@@ -174,11 +174,12 @@ public class NecroMan : MonoBehaviour
 
         //do not allow player to move other pieces
         Team targetPieceTeam = PieceAtPosition(GetMouseWorldPosition()).GetComponent<NecroMan>().team;
-        if (targetPieceTeam == Team.Enemy || targetPieceTeam == Team.Enemy) {return;}
+        if (targetPieceTeam == Team.Enemy || targetPieceTeam == Team.Neutral) {return;}
 
         //select piece
         if (boardManager.selected && boardManager.selectedPiece != gameObject) 
         {
+            if (boardManager.selectedPiece.GetComponent<NecroMan>().team == team) {return;}
             boardManager.selectedToAttack = gameObject;
             return;
         }

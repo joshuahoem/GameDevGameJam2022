@@ -5,38 +5,40 @@ using UnityEngine;
 public class InventoryManager : MonoBehaviour
 {
     [SerializeField] GameObject slotPrefab; 
-    List<GameObject> inventoryItems = new List<GameObject>();
+    [SerializeField] public List<GameObject> inventoryItems = new List<GameObject>();
     
-    public void UpdateInventory(InventoryItem item, bool add)
+    public void UpdateInventory(InventoryItemData passData, InventoryItem item, bool add, int stackSize)
     {
-        Debug.Log("updating...");
-        int stackSize = item.stackSize;
+        Debug.Log(stackSize);
         if (add && stackSize <= 1)
         {
-            Debug.Log("Adding...");
             GameObject newItem = Instantiate(slotPrefab);
             newItem.transform.SetParent(transform, false);
 
-            newItem.GetComponent<ItemSlot>().Set(item);
+            newItem.GetComponent<ItemSlot>().Set(passData, item);
             inventoryItems.Add(newItem);
         }
         else if (add && stackSize > 1)
         {
-            Debug.Log("increasing stack size");
+
             foreach (GameObject searchItem in inventoryItems)
             {
-                Debug.Log(item.data.displayName);
-                Debug.Log(searchItem.GetComponent<ItemSlot>().nameLabel.text.ToString());
                 if (item.data.displayName == searchItem.GetComponent<ItemSlot>().nameLabel.text.ToString())
                 {
-                    Debug.Log("Found!");
-                    searchItem.GetComponent<ItemSlot>().Set(item);    
+                    searchItem.GetComponent<ItemSlot>().Set(passData, item);    
                 }
             }
         }
         else if (!add)
         {
-            Debug.Log("Destroy Old one");
+            //Debug.Log("Destroy Old one");
+            foreach (GameObject searchItem in inventoryItems)
+            {
+                if (item.data.displayName == searchItem.GetComponent<ItemSlot>().nameLabel.text.ToString())
+                {
+                    searchItem.GetComponent<ItemSlot>().Set(passData, item);    
+                }
+            }
         }
         else
         {
