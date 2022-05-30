@@ -164,6 +164,7 @@ MonoBehaviour:
   displaySize: 1
   movedThisTurn: 0
   attackedThisTurn: 0
+  summonedThisTurn: 0
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   exhaustColor: {r: 0.5, g: 0.49292454, b: 0.49292454, a: 1}
   corpsePrefab: {fileID: 1608204095474337193, guid: 1afcefadfca48034a92f93dfe0cbdd68, type: 3}

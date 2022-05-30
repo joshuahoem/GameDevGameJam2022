@@ -154,7 +154,7 @@ MonoBehaviour:
   pieceValue: 1
   sizeClass: 5
   attackRange: 1
-  attackDamage: 5
+  attackDamage: 1
   selected: 0
   moved: 1
   canMove: 1
@@ -163,6 +163,7 @@ MonoBehaviour:
   displaySize: 1
   movedThisTurn: 0
   attackedThisTurn: 0
+  summonedThisTurn: 0
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   exhaustColor: {r: 0.4056604, g: 0.34251514, b: 0.34251514, a: 1}
   corpsePrefab: {fileID: 0}
