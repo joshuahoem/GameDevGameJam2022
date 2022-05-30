@@ -8,7 +8,8 @@ public class CheckRange : MonoBehaviour
     [SerializeField] GameObject availableSpacesPrefab;
     public List<GameObject> tiles = new List<GameObject>();
     BoardManager boardManager; 
-
+    [SerializeField] int x;
+    [SerializeField] int y;
     private void Start() {
         boardManager = FindObjectOfType<BoardManager>();
     }
@@ -21,8 +22,6 @@ public class CheckRange : MonoBehaviour
             {
                 Destroy(tile.gameObject);
             }
-
-            // tiles.Clear();
 
             return;
         }
@@ -38,8 +37,8 @@ public class CheckRange : MonoBehaviour
             }
         }
 
-        int x = Mathf.FloorToInt(targetedPiece.transform.position.x);
-        int y = Mathf.FloorToInt(targetedPiece.transform.position.y);
+        x = Mathf.FloorToInt(targetedPiece.transform.position.x);
+        y = Mathf.FloorToInt(targetedPiece.transform.position.y);
 
         for (int a = x - range; a <= x + range; a++)
         {
@@ -59,6 +58,7 @@ public class CheckRange : MonoBehaviour
     {
         foreach (GameObject tile in tiles)
         {
+            // Debug.Log(tile);
             if (RoundVector(targetPos) == RoundVector(tile.transform.position))
             {
                 tiles.Clear();

@@ -133,7 +133,7 @@ public class NecroMan : MonoBehaviour
                             return;
                         } 
                         if (grid.GetValue(targetPosition) == 0) {return;}
-                        Debug.Log("Attack");
+
                         boardManager.selectedToAttack.GetComponent<NecroMan>().TakeDamage(attackDamage);
 
                         selected = false;
@@ -214,7 +214,6 @@ public class NecroMan : MonoBehaviour
             else 
             {
                 //Neutral
-                Debug.Log("Neutral");
                 GetComponent<ItemObject>().Pickup();
                 corpse = true;
                 grid.SetValue(currentPosition, 0);

@@ -12,7 +12,14 @@ public class InventoryManager : MonoBehaviour
         if (add && stackSize <= 1)
         {
             GameObject newItem = Instantiate(slotPrefab);
-            newItem.transform.SetParent(transform, false);
+            if (newItem.transform == null)
+            {
+                newItem.transform.SetParent(FindObjectOfType<InventoryManager>().transform, false);
+            }
+            else
+            {
+                newItem.transform.SetParent(transform, false);
+            }
 
             newItem.GetComponent<ItemSlot>().Set(passData, item);
             inventoryItems.Add(newItem);

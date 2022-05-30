@@ -6,16 +6,29 @@ using System;
 [Serializable]
 public class InventorySystem : MonoBehaviour
 {
-    private Dictionary<InventoryItemData, InventoryItem> itemDictionary;
-    [SerializeField] public List<InventoryItem> inventory;
+    private Dictionary<InventoryItemData, InventoryItem> itemDictionary = 
+        new Dictionary<InventoryItemData, InventoryItem>();
+    [SerializeField] public List<InventoryItem> inventory = 
+        new List<InventoryItem>();
     [SerializeField] private InventoryManager inventoryManager;
     public static InventorySystem current;
 
-    private void Awake() 
+    private void Awake() {
+        //planketon (dont destory if there is 1, destroy if there is more than 1)
+        int numInventorySystem = FindObjectsOfType<InventorySystem>().Length;
+        if (numInventorySystem>1)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            DontDestroyOnLoad(gameObject);
+        }
+    }
+
+    private void Start() 
     {
         inventoryManager = FindObjectOfType<InventoryManager>();
-        inventory = new List<InventoryItem>();
-        itemDictionary = new Dictionary<InventoryItemData, InventoryItem>();
         current = this;
     }
 
@@ -71,4 +84,5 @@ public class InventorySystem : MonoBehaviour
             return 0;
         }
     }
+    
 }

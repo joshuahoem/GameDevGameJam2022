@@ -9,6 +9,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 {
     //Works only on Canvas images/ canvas elements
 
+    bool moreThanOneObject = false;
     [SerializeField] RectTransform rectTransform;
     Vector3 startingPos;
     [SerializeField] private Canvas canvas;
@@ -37,13 +38,49 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        //Debug.Log("begin");
+        // Debug.Log("begin");
         rectTransform.localScale = new Vector3(0.6f, 0.6f, 0.6f); //bring down to size of square
+        
+        if (!mouseControl)
+        {
+            mouseControl = FindObjectOfType<MouseControl>();
+        }
         mouseControl.hoverSquareEnabled = true;
+        
+
+        if (!checkRange)
+        {
+            checkRange = FindObjectOfType<CheckRange>();
+        }
         checkRange.Range(1,1,true); //1 for necromancer, 1 for range
         
         //subtract from inventory
-        FindObjectOfType<InventorySystem>().Remove(thisItemData);
+        if (InventorySystem.current.GetStackSize(thisItemData)==1)
+        {
+            moreThanOneObject = false;
+            FindObjectOfType<InventorySystem>().Remove(thisItemData);
+            return;
+        }
+        else
+        {
+                
+            int numOfIterations = 0;
+            moreThanOneObject = true;
+            Debug.Log(InventorySystem.current.GetStackSize(thisItemData));
+
+            while (InventorySystem.current.GetStackSize(thisItemData) > 0)
+            {
+                numOfIterations++;
+                FindObjectOfType<InventorySystem>().Remove(thisItemData);
+            }
+
+            Debug.Log(numOfIterations + " i");
+
+            for (int i = 0; i < numOfIterations-1; i++)
+            {
+                FindObjectOfType<InventorySystem>().Add(thisItemData);
+            }
+        }
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -58,19 +95,21 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
         checkRange.Range(1,1,false); //1 for necromancer, 1 for range
 
 
-
-        if (grid.InBounds(targetPosition) && grid.GetValue(targetPosition) == 0 && checkRange.CheckSpaces(targetPosition))
+        //check if in place that can be spawned
+        if (checkRange.CheckSpaces(targetPosition) && grid.InBounds(targetPosition) && grid.GetValue(targetPosition) == 0)
         {
-            //check if in place that can be spawned
             SpawnCreature(targetPosition);
         }
         else
         {
             //return to inventory
-            FindObjectOfType<InventoryManager>().inventoryItems.Remove(gameObject);
-            FindObjectOfType<InventorySystem>().Add(thisItemData);
+            if (!moreThanOneObject)
+            {
+                FindObjectOfType<InventoryManager>().inventoryItems.Remove(gameObject);
+                FindObjectOfType<InventorySystem>().Add(thisItemData);
 
-            Destroy(gameObject);
+                Destroy(gameObject);
+            }
         }
     }
 
@@ -84,6 +123,11 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
             //success
             GameObject newpiece = Instantiate (creatureToSpawn, RoundVector(targetPos), Quaternion.identity);
             NecroMan necroMan = newpiece.GetComponent<NecroMan>();
+
+            if (grid == null)
+            {
+                grid = FindObjectOfType<BoardManager>().gridMaker;
+            }
             grid.SetValue(targetPos, necroMan.pieceValue);
             necroMan.team = NecroMan.Team.Player;
 
@@ -101,11 +145,11 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
         InventorySystem system = FindObjectOfType<InventorySystem>();
         int stackSize = system.GetStackSize(thisItemData);
 
-        if (stackSize <= 0)
+        if (stackSize <= 0 || moreThanOneObject)
         {
             StartCoroutine(DestroyObject());
         }
-        else if (stackSize >= 1)
+        else if (stackSize >= 1 && !moreThanOneObject)
         {
             transform.position = startingPos;
             
@@ -113,6 +157,10 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 
             rectTransform.localScale = new Vector3(1f, 1f, 1f); //bring back to normal size
         }
+        // else if (stackSize >= 1 && moreThanOneObject)
+        // {
+        //     StartCoroutine(DestroyObject());
+        // }
     }
 
     private IEnumerator DestroyObject()
