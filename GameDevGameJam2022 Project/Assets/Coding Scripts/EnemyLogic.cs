@@ -61,6 +61,7 @@ public class EnemyLogic : MonoBehaviour
             else
             {
                 pieceToAttack = PieceAtPosition(targetPosition);
+                Debug.Log(pieceToAttack.name);
                 newTargetPos = FindPositionCloseToTarget();
             }
 
@@ -181,7 +182,7 @@ public class EnemyLogic : MonoBehaviour
                 if (distance > (Mathf.Abs((xValue - x)) + Mathf.Abs((yValue + y))))
                 {
                     Debug.Log(distance + "distance2");
-                    if (grid.GetValue(x,y) == 0)
+                    if (grid.GetValue(x,y) == 0 && grid.InBounds(new Vector3(x,y)))
                     {
                         Debug.Log("here");
                         distance = (Mathf.Abs((xValue - x)) + Mathf.Abs((yValue + y)));
@@ -228,6 +229,8 @@ public class EnemyLogic : MonoBehaviour
     private bool AttackRange()
     {
         int attackRange = targetPiece.GetComponent<NecroMan>().attackRange;
+
+        Debug.Log(pieceToAttack.name);
 
         float xTarget = pieceToAttack.transform.position.x;
         float yTarget = pieceToAttack.transform.position.y;
@@ -289,6 +292,7 @@ public class EnemyLogic : MonoBehaviour
         {
             targetPosition = Vector3.zero;
             move = false;
+            if (pieceToAttack == null) {return;}
             if (AttackRange())
             {
                 StartCoroutine(Attack());
@@ -298,8 +302,9 @@ public class EnemyLogic : MonoBehaviour
 
     private IEnumerator Attack()
     {
+        Debug.Log(pieceToAttack);
+        Debug.Log(targetPiece);
         yield return new WaitForSeconds(0.2f);
-
         int attackDamage = targetPiece.GetComponent<NecroMan>().attackDamage;
         pieceToAttack.GetComponent<NecroMan>().TakeDamage(attackDamage);
     }
