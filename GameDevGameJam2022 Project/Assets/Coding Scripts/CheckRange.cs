@@ -8,7 +8,8 @@ public class CheckRange : MonoBehaviour
     [SerializeField] GameObject availableSpacesPrefab;
     public List<GameObject> tiles = new List<GameObject>();
     BoardManager boardManager; 
-
+    [SerializeField] int x;
+    [SerializeField] int y;
     private void Start() {
         boardManager = FindObjectOfType<BoardManager>();
     }
@@ -21,8 +22,6 @@ public class CheckRange : MonoBehaviour
             {
                 Destroy(tile.gameObject);
             }
-
-            // tiles.Clear();
 
             return;
         }
@@ -38,8 +37,10 @@ public class CheckRange : MonoBehaviour
             }
         }
 
-        int x = Mathf.FloorToInt(targetedPiece.transform.position.x);
-        int y = Mathf.FloorToInt(targetedPiece.transform.position.y);
+        if (targetedPiece.GetComponent<NecroMan>().summonedThisTurn) {return;}
+
+        x = Mathf.FloorToInt(targetedPiece.transform.position.x);
+        y = Mathf.FloorToInt(targetedPiece.transform.position.y);
 
         for (int a = x - range; a <= x + range; a++)
         {
@@ -47,7 +48,8 @@ public class CheckRange : MonoBehaviour
             {
                 if (boardManager.gridMaker.GetValue(a,b) == 0)
                 {
-                    GameObject tile = Instantiate(availableSpacesPrefab, new Vector3(a,b) + new Vector3(0.5f,0.5f), Quaternion.identity);
+                    GameObject tile = Instantiate(availableSpacesPrefab, new Vector3(a,b) 
+                        + new Vector3(0.5f,0.5f), Quaternion.identity);
                     tiles.Add(tile);
                 }
             }
@@ -59,6 +61,7 @@ public class CheckRange : MonoBehaviour
     {
         foreach (GameObject tile in tiles)
         {
+            // Debug.Log(tile);
             if (RoundVector(targetPos) == RoundVector(tile.transform.position))
             {
                 tiles.Clear();

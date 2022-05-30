@@ -163,6 +163,8 @@ MonoBehaviour:
   displaySize: 1
   movedThisTurn: 0
   attackedThisTurn: 0
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  exhaustColor: {r: 0.4056604, g: 0.34251514, b: 0.34251514, a: 1}
   corpsePrefab: {fileID: 0}
   moveOutline: {fileID: 5374602790532993072, guid: 3d4a48b4c5389da46af357932f822324, type: 3}
   attackOutline: {fileID: 5374602790532993072, guid: f84ba517b65cb6d44a41fa98dd3e5698, type: 3}
@@ -221,7 +223,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.65, y: 0.3}
+  m_AnchoredPosition: {x: -0.34, y: 0.44}
   m_SizeDelta: {x: 1.1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &6780398031493249503

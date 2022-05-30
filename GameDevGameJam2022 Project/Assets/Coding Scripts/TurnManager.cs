@@ -26,11 +26,13 @@ public class TurnManager : MonoBehaviour
                 //switch to AI
                 teamManager.RegenerateEnemy();
                 gameState = GameState.AI;
+                FindObjectOfType<EnemyLogic>().EnemyTurn();
                 break;
             case GameState.AI:
                 //switch to Player
                 teamManager.RegeneratePlayer();
                 gameState = GameState.Player;
+                FindObjectOfType<CameraMovement>().CameraMoveToNecroMan();
                 break;
         }
         turnText.text = gameState.ToString();

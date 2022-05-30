@@ -7,12 +7,12 @@ public class NecroMan : MonoBehaviour
 {
     //Numbers
     [SerializeField] float minSpeed = 10f;
-    [SerializeField] int moveDistance = 3;
+    [SerializeField] public int moveDistance = 3;
     [SerializeField] public int pieceValue = 1;
-    [SerializeField] int sizeClass = 5;
+    [SerializeField] public int sizeClass = 5;
     int maxHealth;
-    [SerializeField] int attackRange = 1;
-    [SerializeField] int attackDamage = 5;
+    [SerializeField] public int attackRange = 1;
+    [SerializeField] public int attackDamage = 5;
 
     //States
     [SerializeField] public bool selected = false;
@@ -23,7 +23,10 @@ public class NecroMan : MonoBehaviour
     [SerializeField] bool displaySize = true;
     public bool movedThisTurn = false; 
     public bool attackedThisTurn = false;
+    public bool summonedThisTurn = false;
     bool corpse = false;
+    [SerializeField] Color normalColor;
+    [SerializeField] Color exhaustColor;
 
     //Cache
     [SerializeField] GameObject corpsePrefab;
@@ -74,98 +77,102 @@ public class NecroMan : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
+            CheckMove();
+        }
+    }
+
+    public void CheckMove()
+    {
+        if (!canMove) { return; }
+        if (!selected) { return; }
             
-            if (!canMove) { return; }
-            if (!selected) { return; }
-
-            
-            targetPosition = RoundVector(GetMouseWorldPosition());
-            if (Vector2.Distance(transform.position, targetPosition)<= 0.5f)
-            {
-                targetPosition = transform.position;
-                return;
-            }
-
-            //check clicked position
-            if (!grid.InBounds(GetMouseWorldPosition())) {return;}
-            int x,y;
-            x = Mathf.FloorToInt(currentPosition.x);
-            y = Mathf.FloorToInt(currentPosition.y);
-            if (Mathf.Abs(grid.GetX(targetPosition)-x) > moveDistance || Mathf.Abs(grid.GetY(targetPosition)-y) > moveDistance) {return;}
-            int positionValue = grid.GetValue(GetMouseWorldPosition());
-            if (positionValue == 0 && !movedThisTurn) //0 is open so move there
-            {
-                //move
-                grid.SetValue(targetPosition,pieceValue);            //1 for your Necromancer
-               //Debug.Log(grid.GetValue(GetMouseWorldPosition()));
-
-                //time to move
-                grid.SetValue(currentPosition, 0); // set old space as available
-                ShowMoves(false);
-                moved = false;
-                selected = false;
-                boardManager.selected = false;
-                mouseControl.hoverSquareEnabled = false; //set to false after move, but dont follow mouse anymore
-                movedThisTurn = true;
-            }
-            else if (positionValue != 0 && positionValue != 100) //100 is obstacles
-            {
-                //check to see if you can attack
-                if (Mathf.Abs(grid.GetX(targetPosition)-x) <= attackRange && Mathf.Abs(grid.GetY(targetPosition)-y) <= attackRange)
-                {
-                    
-                    //catch if null and same team
-                    if (boardManager.selectedToAttack == null) 
-                    {
-                        if (!SameTeam(targetPosition))
-                        {
-                            boardManager.selectedToAttack = PieceAtPosition(targetPosition);
-                        }  
-                    } 
-                    if (SameTeam(targetPosition)) { return; }
-
-                    if (!SameTeam(targetPosition) && !attackedThisTurn)
-                    {
-                        //different teams
-                        if (boardManager.selectedToAttack.GetComponent<NecroMan>().corpse) 
-                        {
-                            //attacking corpse - bring back to life instead ##TODO
-                            return;
-                        } 
-                        if (grid.GetValue(targetPosition) == 0) {return;}
-                        Debug.Log("Attack");
-                        boardManager.selectedToAttack.GetComponent<NecroMan>().TakeDamage(attackDamage);
-
-                        selected = false;
-                        boardManager.selected = false;
-                        boardManager.selectedPiece = null;
-                        boardManager.selectedToAttack = null;
-                        mouseControl.hoverSquareEnabled = false;
-                        ShowMoves(false);
-                        attackedThisTurn = true;
-                        
-                    }
-
-                    if (boardManager.selectedToAttack == null) {return;}
-
-                    if (SameTeam(GetMouseWorldPosition()))
-                    {
-                        //same team
-                        Debug.Log("Same Team");
-                        ShowMoves(false);
-                        boardManager.selectedPiece.GetComponent<NecroMan>().selected = false;
-                        boardManager.selectedPiece = PieceAtPosition(targetPosition);
-                        boardManager.selectedPiece.GetComponent<NecroMan>().ShowMoves(true);
-                        boardManager.selectedPiece.GetComponent<NecroMan>().selected = true;
-
-                    }
-                    
-                }
-            }
-
+        targetPosition = RoundVector(GetMouseWorldPosition());
+        if (Vector2.Distance(transform.position, targetPosition)<= 0.5f)
+        {
+            targetPosition = transform.position;
+            return;
         }
 
-    }
+        //check clicked position
+        if (!grid.InBounds(GetMouseWorldPosition())) {return;}
+        int x,y;
+        x = Mathf.FloorToInt(currentPosition.x);
+        y = Mathf.FloorToInt(currentPosition.y);
+        if (Mathf.Abs(grid.GetX(targetPosition)-x) > moveDistance || Mathf.Abs(grid.GetY(targetPosition)-y) > moveDistance) {return;}
+        int positionValue = grid.GetValue(GetMouseWorldPosition());
+        if (positionValue == 0 && !movedThisTurn) //0 is open so move there
+        {
+            //move
+            grid.SetValue(targetPosition,pieceValue);            //1 for your Necromancer
+            //Debug.Log(grid.GetValue(GetMouseWorldPosition()));
+
+            //time to move
+            grid.SetValue(currentPosition, 0); // set old space as available
+            ShowMoves(false);
+            moved = false;
+            selected = false;
+            boardManager.selected = false;
+            mouseControl.hoverSquareEnabled = false; //set to false after move, but dont follow mouse anymore
+            movedThisTurn = true;
+            CheckExhaust();
+        }
+        else if (positionValue != 0 && positionValue != 100) //100 is obstacles
+        {
+            //check to see if you can attack
+            if (Mathf.Abs(grid.GetX(targetPosition)-x) <= attackRange && Mathf.Abs(grid.GetY(targetPosition)-y) <= attackRange)
+            {
+                
+                //catch if null and same team
+                if (boardManager.selectedToAttack == null) 
+                {
+                    if (!SameTeam(targetPosition))
+                    {
+                        boardManager.selectedToAttack = PieceAtPosition(targetPosition);
+                    }  
+                } 
+                if (SameTeam(targetPosition)) { return; }
+
+                if (!SameTeam(targetPosition) && !attackedThisTurn)
+                {
+                    //different teams
+                    if (boardManager.selectedToAttack.GetComponent<NecroMan>().corpse) 
+                    {
+                        //attacking corpse - bring back to life instead ##TODO
+                        return;
+                    } 
+                    if (grid.GetValue(targetPosition) == 0) {return;}
+
+                    boardManager.selectedToAttack.GetComponent<NecroMan>().TakeDamage(attackDamage);
+
+                    selected = false;
+                    boardManager.selected = false;
+                    boardManager.selectedPiece = null;
+                    boardManager.selectedToAttack = null;
+                    mouseControl.hoverSquareEnabled = false;
+                    ShowMoves(false);
+                    attackedThisTurn = true;
+                    CheckExhaust();
+                    
+                }
+
+                if (boardManager.selectedToAttack == null) {return;}
+
+                if (SameTeam(GetMouseWorldPosition()))
+                {
+                    //same team
+                    Debug.Log("Same Team");
+                    ShowMoves(false);
+                    boardManager.selectedPiece.GetComponent<NecroMan>().selected = false;
+                    boardManager.selectedPiece = PieceAtPosition(targetPosition);
+                    boardManager.selectedPiece.GetComponent<NecroMan>().ShowMoves(true);
+                    boardManager.selectedPiece.GetComponent<NecroMan>().selected = true;
+
+                }
+                
+            }
+        }
+
+    }  
 
     private void OnMouseDown()
     {
@@ -214,7 +221,6 @@ public class NecroMan : MonoBehaviour
             else 
             {
                 //Neutral
-                Debug.Log("Neutral");
                 GetComponent<ItemObject>().Pickup();
                 corpse = true;
                 grid.SetValue(currentPosition, 0);
@@ -304,9 +310,12 @@ public class NecroMan : MonoBehaviour
                     }
                     else if (grid.GetValue(x,y) == 100) //obstacles
                     {
-                        //spaces that cannot be moved into
-                        GameObject tile = Instantiate(noMoveOutline, new Vector3 (x + 0.5f,y + 0.5f), Quaternion.identity);
-                        moveTiles.Add(tile);
+                        if (!movedThisTurn)
+                        {
+                            //spaces that cannot be moved into
+                            GameObject tile = Instantiate(noMoveOutline, new Vector3 (x + 0.5f,y + 0.5f), Quaternion.identity);
+                            moveTiles.Add(tile);
+                        }
                     }
                     else if (grid.GetValue(x,y) != 0)
                     {
@@ -314,6 +323,11 @@ public class NecroMan : MonoBehaviour
                         if (attackedThisTurn) {continue;}
                         if (!canBeAttacked) {continue;} //skip obstacles in case
                         
+                        //check range
+                        if (!(Mathf.Abs(grid.GetX(targetPosition)-x) <= attackRange && 
+                            Mathf.Abs(grid.GetY(targetPosition)-y) <= attackRange)) 
+                            {continue;}
+
                         //skip friendly
                         if (!SameTeam(new Vector3(x,y)))
                         {
@@ -324,6 +338,15 @@ public class NecroMan : MonoBehaviour
                     }
                 }
             }
+        }
+    }
+
+    private void CheckExhaust()
+    {
+        if (movedThisTurn && attackedThisTurn)
+        {
+            //exhuasted
+            GetComponentInChildren<SpriteRenderer>().color = exhaustColor;
         }
     }
 
@@ -362,6 +385,8 @@ public class NecroMan : MonoBehaviour
     {
         movedThisTurn = false;
         attackedThisTurn = false;
+        summonedThisTurn = false;
+        GetComponentInChildren<SpriteRenderer>().color = normalColor;
         if (!canRegenerate) {return;}
         sizeClass = maxHealth;
         displayText.GetComponent<TextMeshPro>().SetText(sizeClass.ToString());

@@ -7,18 +7,7 @@ public class SceneLoader : MonoBehaviour
 {
     [SerializeField] float buttonSFXloadTime = .2f;
     [SerializeField] AudioClip buttonClickSFX;
-    // [SerializeField] GameObject menuButtons;
-    // [SerializeField] GameObject startButtons;
-    // [SerializeField] GameObject difficultyButtons;
 
-    // private void Start() {
-    //     if (startButtons)
-    //     {
-    //         startButtons.SetActive(false);
-    //         difficultyButtons.SetActive(false);
-    //         menuButtons.SetActive(true);
-    //     }
-    // }
     public void StartGame()
     {
         StartCoroutine(StartGameCoroutine());
@@ -97,36 +86,28 @@ public class SceneLoader : MonoBehaviour
         Application.Quit();
     }
 
-    // public void StartSessionOptions()
-    // {
-    //     GetComponent<AudioSource>().PlayOneShot(buttonClickSFX);
-        
-    //     //load 1 or 2 player buttons and disable other buttons
-    //     menuButtons.SetActive(false);
-    //     startButtons.SetActive(true);
-    // }
-    // public void DifficltyOptions()
-    // {
-    //     GetComponent<AudioSource>().PlayOneShot(buttonClickSFX);
-        
-    //     //load 1 or 2 player buttons and disable other buttons
-    //     startButtons.SetActive(false);
-    //     difficultyButtons.SetActive(true);
-    // }
+    public void LoadNextLevel()
+    {
+        StartCoroutine(LoadNextLevelCoroutine());
+    }
 
-    // public void BackToMenuFromSession()
-    // {
-    //     GetComponent<AudioSource>().PlayOneShot(buttonClickSFX);
+    private IEnumerator LoadNextLevelCoroutine()
+    {
         
-    //     menuButtons.SetActive(true);
-    //     startButtons.SetActive(false);
-    // }
+        var playerPieces = FindObjectOfType<TeamManager>().playerTeam;
 
-    // public void BackToSessionFromDifficulty()
-    // {
-    //     GetComponent<AudioSource>().PlayOneShot(buttonClickSFX);
-        
-    //     startButtons.SetActive(true);
-    //     difficultyButtons.SetActive(false);
-    // }
+        foreach (GameObject piece in playerPieces)
+        {
+            if (piece.gameObject.GetComponent<ItemObject>() != null)
+            {
+                piece.gameObject.GetComponent<ItemObject>().Pickup();
+            }
+        }
+
+        yield return new WaitForSeconds(0.2f);
+
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentSceneIndex+1);
+    }
+
 }
