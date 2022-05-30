@@ -23,6 +23,7 @@ public class NecroMan : MonoBehaviour
     [SerializeField] bool displaySize = true;
     public bool movedThisTurn = false; 
     public bool attackedThisTurn = false;
+    public bool summonedThisTurn = false;
     bool corpse = false;
     [SerializeField] Color normalColor;
     [SerializeField] Color exhaustColor;
@@ -382,6 +383,7 @@ public class NecroMan : MonoBehaviour
     {
         movedThisTurn = false;
         attackedThisTurn = false;
+        summonedThisTurn = false;
         GetComponentInChildren<SpriteRenderer>().color = normalColor;
         if (!canRegenerate) {return;}
         sizeClass = maxHealth;

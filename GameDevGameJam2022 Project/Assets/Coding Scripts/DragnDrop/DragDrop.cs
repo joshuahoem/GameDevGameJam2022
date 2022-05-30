@@ -93,7 +93,8 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 
 
         //check if in place that can be spawned
-        if (checkRange.CheckSpaces(targetPosition) && grid.InBounds(targetPosition) && grid.GetValue(targetPosition) == 0)
+        if (checkRange.CheckSpaces(targetPosition) && grid.InBounds(targetPosition) && grid.GetValue(targetPosition) == 0
+            && (!(GameObject.Find("NecroMan").GetComponent<NecroMan>().summonedThisTurn)))
         {
             SpawnCreature(targetPosition);
         }
@@ -132,6 +133,8 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
             FindObjectOfType<TeamManager>().allPieces.Add(newpiece);
 
             FindObjectOfType<InventoryManager>().inventoryItems.Remove(gameObject);
+
+            GameObject.Find("NecroMan").GetComponent<NecroMan>().summonedThisTurn = true;
         }
         else
         {

@@ -37,6 +37,8 @@ public class CheckRange : MonoBehaviour
             }
         }
 
+        if (targetedPiece.GetComponent<NecroMan>().summonedThisTurn) {return;}
+
         x = Mathf.FloorToInt(targetedPiece.transform.position.x);
         y = Mathf.FloorToInt(targetedPiece.transform.position.y);
 
