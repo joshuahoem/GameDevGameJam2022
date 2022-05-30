@@ -31,6 +31,7 @@ public class TurnManager : MonoBehaviour
                 //switch to Player
                 teamManager.RegeneratePlayer();
                 gameState = GameState.Player;
+                FindObjectOfType<CameraMovement>().CameraMoveToStart();
                 break;
         }
         turnText.text = gameState.ToString();

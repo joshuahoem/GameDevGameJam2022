@@ -48,7 +48,8 @@ public class CheckRange : MonoBehaviour
             {
                 if (boardManager.gridMaker.GetValue(a,b) == 0)
                 {
-                    GameObject tile = Instantiate(availableSpacesPrefab, new Vector3(a,b) + new Vector3(0.5f,0.5f), Quaternion.identity);
+                    GameObject tile = Instantiate(availableSpacesPrefab, new Vector3(a,b) 
+                        + new Vector3(0.5f,0.5f), Quaternion.identity);
                     tiles.Add(tile);
                 }
             }
