@@ -232,6 +232,8 @@ MonoBehaviour:
   displaySize: 1
   movedThisTurn: 0
   attackedThisTurn: 0
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  exhaustColor: {r: 0.5849056, g: 0.5545567, b: 0.5545567, a: 1}
   corpsePrefab: {fileID: 9153756799325403393, guid: 6c19d0c5ac5175043a57adf3a96aa0ac, type: 3}
   moveOutline: {fileID: 5374602790532993072, guid: 3d4a48b4c5389da46af357932f822324, type: 3}
   attackOutline: {fileID: 5374602790532993072, guid: f84ba517b65cb6d44a41fa98dd3e5698, type: 3}

@@ -24,6 +24,8 @@ public class NecroMan : MonoBehaviour
     public bool movedThisTurn = false; 
     public bool attackedThisTurn = false;
     bool corpse = false;
+    [SerializeField] Color normalColor;
+    [SerializeField] Color exhaustColor;
 
     //Cache
     [SerializeField] GameObject corpsePrefab;
@@ -107,6 +109,7 @@ public class NecroMan : MonoBehaviour
                 boardManager.selected = false;
                 mouseControl.hoverSquareEnabled = false; //set to false after move, but dont follow mouse anymore
                 movedThisTurn = true;
+                CheckExhaust();
             }
             else if (positionValue != 0 && positionValue != 100) //100 is obstacles
             {
@@ -143,6 +146,7 @@ public class NecroMan : MonoBehaviour
                         mouseControl.hoverSquareEnabled = false;
                         ShowMoves(false);
                         attackedThisTurn = true;
+                        CheckExhaust();
                         
                     }
 
@@ -303,9 +307,12 @@ public class NecroMan : MonoBehaviour
                     }
                     else if (grid.GetValue(x,y) == 100) //obstacles
                     {
-                        //spaces that cannot be moved into
-                        GameObject tile = Instantiate(noMoveOutline, new Vector3 (x + 0.5f,y + 0.5f), Quaternion.identity);
-                        moveTiles.Add(tile);
+                        if (!movedThisTurn)
+                        {
+                            //spaces that cannot be moved into
+                            GameObject tile = Instantiate(noMoveOutline, new Vector3 (x + 0.5f,y + 0.5f), Quaternion.identity);
+                            moveTiles.Add(tile);
+                        }
                     }
                     else if (grid.GetValue(x,y) != 0)
                     {
@@ -313,6 +320,11 @@ public class NecroMan : MonoBehaviour
                         if (attackedThisTurn) {continue;}
                         if (!canBeAttacked) {continue;} //skip obstacles in case
                         
+                        //check range
+                        if (!(Mathf.Abs(grid.GetX(targetPosition)-x) <= attackRange && 
+                            Mathf.Abs(grid.GetY(targetPosition)-y) <= attackRange)) 
+                            {continue;}
+
                         //skip friendly
                         if (!SameTeam(new Vector3(x,y)))
                         {
@@ -323,6 +335,15 @@ public class NecroMan : MonoBehaviour
                     }
                 }
             }
+        }
+    }
+
+    private void CheckExhaust()
+    {
+        if (movedThisTurn && attackedThisTurn)
+        {
+            //exhuasted
+            GetComponentInChildren<SpriteRenderer>().color = exhaustColor;
         }
     }
 
@@ -361,6 +382,7 @@ public class NecroMan : MonoBehaviour
     {
         movedThisTurn = false;
         attackedThisTurn = false;
+        GetComponentInChildren<SpriteRenderer>().color = normalColor;
         if (!canRegenerate) {return;}
         sizeClass = maxHealth;
         displayText.GetComponent<TextMeshPro>().SetText(sizeClass.ToString());

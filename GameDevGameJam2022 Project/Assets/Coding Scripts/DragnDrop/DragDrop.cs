@@ -66,15 +66,12 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
                 
             int numOfIterations = 0;
             moreThanOneObject = true;
-            Debug.Log(InventorySystem.current.GetStackSize(thisItemData));
 
             while (InventorySystem.current.GetStackSize(thisItemData) > 0)
             {
                 numOfIterations++;
                 FindObjectOfType<InventorySystem>().Remove(thisItemData);
             }
-
-            Debug.Log(numOfIterations + " i");
 
             for (int i = 0; i < numOfIterations-1; i++)
             {
@@ -157,10 +154,6 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 
             rectTransform.localScale = new Vector3(1f, 1f, 1f); //bring back to normal size
         }
-        // else if (stackSize >= 1 && moreThanOneObject)
-        // {
-        //     StartCoroutine(DestroyObject());
-        // }
     }
 
     private IEnumerator DestroyObject()
