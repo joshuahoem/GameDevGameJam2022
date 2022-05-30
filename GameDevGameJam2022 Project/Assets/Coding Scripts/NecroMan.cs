@@ -215,7 +215,8 @@ public class NecroMan : MonoBehaviour
         {
             if (team != Team.Neutral)
             {
-                grid.SetValue(currentPosition, 0);
+                Debug.Log("enemy");
+                grid.SetValue(transform.position, 0);
                 StartCoroutine(DestroyGameObject());
             }
             else 
@@ -223,7 +224,7 @@ public class NecroMan : MonoBehaviour
                 //Neutral
                 GetComponent<ItemObject>().Pickup();
                 corpse = true;
-                grid.SetValue(currentPosition, 0);
+                grid.SetValue(transform.position, 0);
                 StartCoroutine(DestroyGameObject());
                 //animator
 

@@ -6,6 +6,7 @@ public class EnemyLogic : MonoBehaviour
 {
     //Numbers
     [SerializeField] float moveSpeed = 12;
+    [SerializeField] float enemyTurnDelay = 2f;
 
     //States
     bool move = false;
@@ -18,6 +19,8 @@ public class EnemyLogic : MonoBehaviour
 
     Vector3 targetPosition;
     GameObject targetPiece;
+    GameObject pieceToAttack;
+    private int enemyPieceIndex = 0;
 
     private void Start() 
     {
@@ -32,22 +35,24 @@ public class EnemyLogic : MonoBehaviour
         MovePiece();
     }
 
-    public void EnemyTurn()
+    public void EnemyCoroutine()
     {
-        foreach (GameObject piece in teamManager.enemyTeam)
-        {
-            //decide their move
+        StartCoroutine(EnemyTurn());
+    }
+
+    private IEnumerator EnemyTurn()
+    {
+        GameObject piece = teamManager.enemyTeam[enemyPieceIndex];
             cameraMovement.CameraMoveToTarget(piece.transform.position.x, 
                 piece.transform.position.y);
+        yield return new WaitForSeconds(enemyTurnDelay/2);
+        //decide their move
             
             targetPiece = piece;
 
-            Debug.Log("Finding pos");
             targetPosition = FindTargetPosition();
 
             Vector3 newTargetPos;
-
-            Debug.Log(targetPosition + " first");
 
             if (targetPosition == Vector3.zero)
             {
@@ -55,11 +60,9 @@ public class EnemyLogic : MonoBehaviour
             }
             else
             {
+                pieceToAttack = PieceAtPosition(targetPosition);
                 newTargetPos = FindPositionCloseToTarget();
             }
-
-            Debug.Log(newTargetPos + " new");
-
 
             if (newTargetPos == Vector3.zero)
             {
@@ -67,35 +70,36 @@ public class EnemyLogic : MonoBehaviour
                 newTargetPos = FindPositionCloseToNecroMan();
             }
 
-            Debug.Log("Ready to move");
-
-            Debug.Log(newTargetPos);
             targetPosition = RoundVector(newTargetPos);
             move = true;
+            grid.SetValue(piece.transform.position, 0);
+            grid.SetValue(targetPosition,piece.GetComponent<NecroMan>().pieceValue);
 
-        }
+            if (enemyPieceIndex++ < teamManager.enemyTeam.Count-1)
+            {
+                Invoke("EnemyCoroutine", enemyTurnDelay);
+            }
+            else
+            {
+                enemyPieceIndex = 0;
+                StartCoroutine(EndEnemyTurn());
+            }
     }
 
     private Vector3 FindTargetPosition()
     {
         List<Vector3> target = new List<Vector3>();
         int moveDistance = targetPiece.GetComponent<NecroMan>().moveDistance;
-        Debug.Log(moveDistance + "movedistance");
-        Debug.Log(targetPiece.transform.position.y + "pos y");
         //check available spaces around based on movement
         for (int x = (Mathf.FloorToInt(targetPiece.transform.position.x - moveDistance)); 
                 x <= (Mathf.FloorToInt(targetPiece.transform.position.x + moveDistance)); x++)
         {
-            Debug.Log(x + " x");
             for (int y = (Mathf.FloorToInt(targetPiece.transform.position.y - moveDistance)); 
                 y <= (Mathf.FloorToInt(targetPiece.transform.position.y + moveDistance)); y++)
             {
-            Debug.Log(y + " y");
-
                 if (grid.GetValue(x,y) == 1)
                 {
                     //NecroMan
-                    Debug.Log("1");
                     return new Vector3(x,y);
                 }
                 if (grid.GetValue(x,y) != 0 && grid.GetValue(x,y) != 100
@@ -107,7 +111,6 @@ public class EnemyLogic : MonoBehaviour
                 //No Pieces Close, so find nearest place to Necroman
             }
         }
-                    Debug.Log("2");
 
         if (target.Count == 0)
         {
@@ -122,8 +125,6 @@ public class EnemyLogic : MonoBehaviour
             if (PieceAtPosition(potentialMove).GetComponent<NecroMan>().sizeClass 
                 <= attack)
             {
-                    Debug.Log("3");
-
                 return potentialMove;
             }
         }
@@ -167,7 +168,7 @@ public class EnemyLogic : MonoBehaviour
         int xValue = Mathf.FloorToInt(GameObject.Find("NecroMan").GetComponent<NecroMan>().transform.position.x);
         int yValue = Mathf.FloorToInt(GameObject.Find("NecroMan").GetComponent<NecroMan>().transform.position.y);
 
-        int targetX=0, targetY=0, distance=1000;
+        int targetX = 0, targetY = 0, distance = 1000;
         int moveDistance = targetPiece.GetComponent<NecroMan>().moveDistance;
 
         //check available spaces around based on movement
@@ -177,10 +178,12 @@ public class EnemyLogic : MonoBehaviour
             for (int y = (Mathf.FloorToInt(targetPiece.transform.position.y - moveDistance)); 
                 y <= (Mathf.FloorToInt(targetPiece.transform.position.y + moveDistance)); y++)
             {
-                if (distance < (Mathf.Abs((xValue - x)) + Mathf.Abs((yValue + y))))
+                if (distance > (Mathf.Abs((xValue - x)) + Mathf.Abs((yValue + y))))
                 {
+                    Debug.Log(distance + "distance2");
                     if (grid.GetValue(x,y) == 0)
                     {
+                        Debug.Log("here");
                         distance = (Mathf.Abs((xValue - x)) + Mathf.Abs((yValue + y)));
                         targetX = x;
                         targetY = y;
@@ -189,6 +192,7 @@ public class EnemyLogic : MonoBehaviour
             }
         }
 
+        Debug.Log(new Vector3(targetX,targetY));
         return new Vector3(targetX,targetY);
     }
 
@@ -202,15 +206,37 @@ public class EnemyLogic : MonoBehaviour
             for (int y = (Mathf.FloorToInt(targetPosition.y - attackRange)); 
                 y <= (Mathf.FloorToInt(targetPosition.y + attackRange)); y++)
             {
-                if (grid.GetValue(x,y) == 0)
+                if (grid.GetValue(x,y) == 0 && MoveRange(x,y))
                 {
-                    //first open space near target
+                    //first open space near target in move range
                     return new Vector3(x,y);
                 }
             }
         }
 
         return Vector3.zero;
+    }
+
+    private bool MoveRange(int xNew, int yNew)
+    {
+        int moveDistance = targetPiece.GetComponent<NecroMan>().moveDistance;
+
+        return (Mathf.Abs(targetPiece.transform.position.x - xNew) <= moveDistance
+                && Mathf.Abs(targetPiece.transform.position.y - yNew) <= moveDistance);
+    }
+
+    private bool AttackRange()
+    {
+        int attackRange = targetPiece.GetComponent<NecroMan>().attackRange;
+
+        float xTarget = pieceToAttack.transform.position.x;
+        float yTarget = pieceToAttack.transform.position.y;
+
+        float xCurrent = targetPiece.transform.position.x;
+        float yCurrent = targetPiece.transform.position.y;
+
+        return (Mathf.Abs(xTarget-xCurrent) <= attackRange &&
+                Mathf.Abs(yTarget-yCurrent) <= attackRange);
     }
 
     private bool PlayerTeam(Vector3 piecePosition)
@@ -263,7 +289,25 @@ public class EnemyLogic : MonoBehaviour
         {
             targetPosition = Vector3.zero;
             move = false;
+            if (AttackRange())
+            {
+                StartCoroutine(Attack());
+            }
         }
+    }
+
+    private IEnumerator Attack()
+    {
+        yield return new WaitForSeconds(0.2f);
+
+        int attackDamage = targetPiece.GetComponent<NecroMan>().attackDamage;
+        pieceToAttack.GetComponent<NecroMan>().TakeDamage(attackDamage);
+    }
+
+    private IEnumerator EndEnemyTurn()
+    {
+        yield return new WaitForSeconds(enemyTurnDelay);
+        FindObjectOfType<TurnManager>().EndTurn();
     }
 
 }
