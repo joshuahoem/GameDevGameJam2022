@@ -169,6 +169,10 @@ public class EnemyLogic : MonoBehaviour
         int xValue = Mathf.FloorToInt(GameObject.Find("NecroMan").GetComponent<NecroMan>().transform.position.x);
         int yValue = Mathf.FloorToInt(GameObject.Find("NecroMan").GetComponent<NecroMan>().transform.position.y);
 
+        Debug.Log(xValue);
+        Debug.Log(yValue);
+
+
         int targetX = 0, targetY = 0, distance = 1000;
         int moveDistance = targetPiece.GetComponent<NecroMan>().moveDistance;
 
@@ -179,21 +183,21 @@ public class EnemyLogic : MonoBehaviour
             for (int y = (Mathf.FloorToInt(targetPiece.transform.position.y - moveDistance)); 
                 y <= (Mathf.FloorToInt(targetPiece.transform.position.y + moveDistance)); y++)
             {
-                if (distance > (Mathf.Abs((xValue - x)) + Mathf.Abs((yValue + y))))
+                Debug.Log(Mathf.Abs((xValue - x)) + Mathf.Abs((yValue - y)) + " total" + new Vector3 (x,y));
+
+                if (distance > (Mathf.Abs((xValue - x)) + Mathf.Abs((yValue - y))))
                 {
-                    Debug.Log(distance + "distance2");
                     if (grid.GetValue(x,y) == 0 && grid.InBounds(new Vector3(x,y)))
                     {
-                        Debug.Log("here");
-                        distance = (Mathf.Abs((xValue - x)) + Mathf.Abs((yValue + y)));
+                        distance = (Mathf.Abs((xValue - x)) + Mathf.Abs((yValue - y)));
                         targetX = x;
                         targetY = y;
+                        Debug.Log(new Vector3(targetX,targetY) + "target");
                     }
                 }
             }
         }
 
-        Debug.Log(new Vector3(targetX,targetY));
         return new Vector3(targetX,targetY);
     }
 

@@ -24,12 +24,7 @@ public class GridMaker<TGridObject>
         gridArray = new int[width,height];
         debugTextArray = new TextMesh[width,height];
 
-        Debug.Log(debugDisplay);
-
         if (!debugDisplay) {return;}
-
-        Debug.Log(debugDisplay);
-
 
         for (int x=0; x<gridArray.GetLength(0); x++)
         {
