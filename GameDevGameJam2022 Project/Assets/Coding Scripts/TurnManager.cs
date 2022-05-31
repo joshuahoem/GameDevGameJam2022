@@ -68,7 +68,7 @@ public class TurnManager : MonoBehaviour
         }
     }
     
-    private void GameOver()
+    public void GameOver()
     {
         FindObjectOfType<SceneLoader>().MainMenu();
     }

@@ -1105,6 +1105,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2646636731001488200, guid: 06dab1f3b3af5f84e9166ac4e7a56688, type: 3}
+      propertyPath: normalColor.g
+      value: 0.5647059
+      objectReference: {fileID: 0}
+    - target: {fileID: 2646636731001488200, guid: 06dab1f3b3af5f84e9166ac4e7a56688, type: 3}
+      propertyPath: normalColor.r
+      value: 0.34509805
+      objectReference: {fileID: 0}
     - target: {fileID: 2646636731001488202, guid: 06dab1f3b3af5f84e9166ac4e7a56688, type: 3}
       propertyPath: m_Name
       value: Bear (1)

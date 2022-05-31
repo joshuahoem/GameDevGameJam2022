@@ -13,7 +13,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 689938251514154177, guid: 9c2efb7ab5a3fc34e90a8721280eb9e7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 27.859835
+      value: 30.98
       objectReference: {fileID: 0}
     - target: {fileID: 689938251514154177, guid: 9c2efb7ab5a3fc34e90a8721280eb9e7, type: 3}
       propertyPath: m_LocalPosition.y
@@ -55,9 +55,17 @@ PrefabInstance:
       propertyPath: team
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 689938251514154178, guid: 9c2efb7ab5a3fc34e90a8721280eb9e7, type: 3}
+      propertyPath: normalColor.b
+      value: 0.24705882
+      objectReference: {fileID: 0}
+    - target: {fileID: 689938251514154178, guid: 9c2efb7ab5a3fc34e90a8721280eb9e7, type: 3}
+      propertyPath: normalColor.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 689938251514154188, guid: 9c2efb7ab5a3fc34e90a8721280eb9e7, type: 3}
       propertyPath: m_Name
-      value: Bunny Variant
+      value: Bunny
       objectReference: {fileID: 0}
     - target: {fileID: 689938251682136949, guid: 9c2efb7ab5a3fc34e90a8721280eb9e7, type: 3}
       propertyPath: m_Color.b

@@ -13,7 +13,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 992311742031252757, guid: 83988f23434490540939a10ad8f5b67d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 27.996418
+      value: 32.6
       objectReference: {fileID: 0}
     - target: {fileID: 992311742031252757, guid: 83988f23434490540939a10ad8f5b67d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -53,11 +53,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 992311742031252760, guid: 83988f23434490540939a10ad8f5b67d, type: 3}
       propertyPath: m_Name
-      value: Mouse Variant
+      value: Mouse
       objectReference: {fileID: 0}
     - target: {fileID: 992311742031252762, guid: 83988f23434490540939a10ad8f5b67d, type: 3}
       propertyPath: team
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 992311742031252762, guid: 83988f23434490540939a10ad8f5b67d, type: 3}
+      propertyPath: moveDistance
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 992311742031252762, guid: 83988f23434490540939a10ad8f5b67d, type: 3}
+      propertyPath: normalColor.b
+      value: 0.24705882
+      objectReference: {fileID: 0}
+    - target: {fileID: 992311742031252762, guid: 83988f23434490540939a10ad8f5b67d, type: 3}
+      propertyPath: normalColor.r
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 992311742317284822, guid: 83988f23434490540939a10ad8f5b67d, type: 3}
       propertyPath: m_Color.b

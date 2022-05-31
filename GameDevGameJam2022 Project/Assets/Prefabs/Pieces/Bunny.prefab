@@ -57,7 +57,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 7936693754969848311, guid: a66b24a55236409409505c75d292c0b9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -101,8 +101,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 98
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a66b24a55236409409505c75d292c0b9, type: 2}
+  m_sharedMaterial: {fileID: 7936693754969848311, guid: a66b24a55236409409505c75d292c0b9, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -132,7 +132,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -232,6 +232,7 @@ MonoBehaviour:
   displaySize: 1
   movedThisTurn: 0
   attackedThisTurn: 0
+  summonedThisTurn: 0
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   exhaustColor: {r: 0.5849056, g: 0.5545567, b: 0.5545567, a: 1}
   corpsePrefab: {fileID: 9153756799325403393, guid: 6c19d0c5ac5175043a57adf3a96aa0ac, type: 3}

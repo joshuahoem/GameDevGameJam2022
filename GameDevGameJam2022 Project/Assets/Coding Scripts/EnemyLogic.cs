@@ -47,6 +47,13 @@ public class EnemyLogic : MonoBehaviour
                 piece.transform.position.y);
         yield return new WaitForSeconds(enemyTurnDelay/2);
         //decide their move
+
+        if (GameObject.Find("NecroMan") == null)
+        {
+            //dead Necroman
+            FindObjectOfType<TurnManager>().GameOver();
+            yield break;
+        }
             
             targetPiece = piece;
 
@@ -183,16 +190,13 @@ public class EnemyLogic : MonoBehaviour
             for (int y = (Mathf.FloorToInt(targetPiece.transform.position.y - moveDistance)); 
                 y <= (Mathf.FloorToInt(targetPiece.transform.position.y + moveDistance)); y++)
             {
-                Debug.Log(Mathf.Abs((xValue - x)) + Mathf.Abs((yValue - y)) + " total" + new Vector3 (x,y));
-
-                if (distance > (Mathf.Abs((xValue - x)) + Mathf.Abs((yValue - y))))
+               if (distance > (Mathf.Abs((xValue - x)) + Mathf.Abs((yValue - y))))
                 {
                     if (grid.GetValue(x,y) == 0 && grid.InBounds(new Vector3(x,y)))
                     {
                         distance = (Mathf.Abs((xValue - x)) + Mathf.Abs((yValue - y)));
                         targetX = x;
                         targetY = y;
-                        Debug.Log(new Vector3(targetX,targetY) + "target");
                     }
                 }
             }
