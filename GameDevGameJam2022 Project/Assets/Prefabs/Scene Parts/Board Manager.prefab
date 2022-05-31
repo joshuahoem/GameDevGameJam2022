@@ -46,7 +46,7 @@ MonoBehaviour:
   width: 30
   height: 16
   cellSize: 1
-  debugDisplay: 0
+  debugDisplay: 1
   originPosition: {x: 0, y: 0, z: 0}
   selected: 0
   selectedToAttack: {fileID: 0}
