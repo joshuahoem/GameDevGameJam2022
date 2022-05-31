@@ -998,19 +998,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1221488961, guid: e0e4791c281401744ba9ec5057a379d9, type: 3}
       propertyPath: xMax
-      value: 23.2
+      value: 19.9
       objectReference: {fileID: 0}
     - target: {fileID: 1221488961, guid: e0e4791c281401744ba9ec5057a379d9, type: 3}
       propertyPath: xMin
-      value: 6.8
+      value: 8.1
       objectReference: {fileID: 0}
     - target: {fileID: 1221488961, guid: e0e4791c281401744ba9ec5057a379d9, type: 3}
       propertyPath: yMax
-      value: 12.2
+      value: 11.9
       objectReference: {fileID: 0}
     - target: {fileID: 1221488961, guid: e0e4791c281401744ba9ec5057a379d9, type: 3}
       propertyPath: yMin
-      value: 3.8
+      value: 4.1
       objectReference: {fileID: 0}
     - target: {fileID: 4721354269320623382, guid: e0e4791c281401744ba9ec5057a379d9, type: 3}
       propertyPath: m_RootOrder
