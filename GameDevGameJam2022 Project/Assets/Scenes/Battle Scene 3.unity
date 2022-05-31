@@ -257,6 +257,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6780398031085577351, guid: 1e891938f38f10f4882b49817905c442, type: 3}
+      propertyPath: pieceValue
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6780398031085577351, guid: 1e891938f38f10f4882b49817905c442, type: 3}
       propertyPath: attackDamage
       value: 3
       objectReference: {fileID: 0}
@@ -10650,8 +10654,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameState: 0
-  turnText: {fileID: 0}
-  endTurnButton: {fileID: 0}
+  turnText: {fileID: 1766900061}
+  endTurnButton: {fileID: 2128274778}
 --- !u!1 &836624362
 GameObject:
   m_ObjectHideFlags: 0
@@ -10988,6 +10992,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 689938251514154177, guid: 9c2efb7ab5a3fc34e90a8721280eb9e7, type: 3}
   m_PrefabInstance: {fileID: 689938252721457659}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1766900061 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1955244376428232935, guid: 403469c45ab8114468a6b2c0550fe3fc, type: 3}
+  m_PrefabInstance: {fileID: 585909172}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1798735976
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11124,11 +11139,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4721354269320623382, guid: e0e4791c281401744ba9ec5057a379d9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 15
+      value: 8.1
       objectReference: {fileID: 0}
     - target: {fileID: 4721354269320623382, guid: e0e4791c281401744ba9ec5057a379d9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8
+      value: 4.1
       objectReference: {fileID: 0}
     - target: {fileID: 4721354269320623382, guid: e0e4791c281401744ba9ec5057a379d9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -14362,6 +14377,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstaclePrefab: {fileID: 187768589985133171, guid: 795ac3f45be8d1b4e973f3be3bbaa54d, type: 3}
+--- !u!114 &2128274778 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1955244376195377536, guid: 403469c45ab8114468a6b2c0550fe3fc, type: 3}
+  m_PrefabInstance: {fileID: 585909172}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2141341068
 GameObject:
   m_ObjectHideFlags: 0
@@ -25265,9 +25291,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 836624363}
     m_Modifications:
+    - target: {fileID: 442883085536201552, guid: fbc09e33d6c8ac741a0db62e7242ee03, type: 3}
+      propertyPath: normalColor.b
+      value: 0.015686275
+      objectReference: {fileID: 0}
+    - target: {fileID: 442883085536201552, guid: fbc09e33d6c8ac741a0db62e7242ee03, type: 3}
+      propertyPath: normalColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442883085536201552, guid: fbc09e33d6c8ac741a0db62e7242ee03, type: 3}
+      propertyPath: normalColor.r
+      value: 0.8980392
+      objectReference: {fileID: 0}
     - target: {fileID: 442883085536201554, guid: fbc09e33d6c8ac741a0db62e7242ee03, type: 3}
       propertyPath: m_Name
-      value: Green Enemy Mouse
+      value: Red Enemy Mouse
       objectReference: {fileID: 0}
     - target: {fileID: 442883085536201567, guid: fbc09e33d6c8ac741a0db62e7242ee03, type: 3}
       propertyPath: m_RootOrder
@@ -25456,11 +25494,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6780398031085577350, guid: 1e891938f38f10f4882b49817905c442, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.26
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 6780398031085577350, guid: 1e891938f38f10f4882b49817905c442, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.71
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 6780398031085577350, guid: 1e891938f38f10f4882b49817905c442, type: 3}
       propertyPath: m_LocalPosition.z

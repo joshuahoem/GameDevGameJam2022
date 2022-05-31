@@ -13,11 +13,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 689938251514154177, guid: 9c2efb7ab5a3fc34e90a8721280eb9e7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 33.54
+      value: 36.5557
       objectReference: {fileID: 0}
     - target: {fileID: 689938251514154177, guid: 9c2efb7ab5a3fc34e90a8721280eb9e7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 17.86
+      value: 15.33491
       objectReference: {fileID: 0}
     - target: {fileID: 689938251514154177, guid: 9c2efb7ab5a3fc34e90a8721280eb9e7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -51,9 +51,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 689938251514154178, guid: 9c2efb7ab5a3fc34e90a8721280eb9e7, type: 3}
+      propertyPath: normalColor.b
+      value: 0.015686275
+      objectReference: {fileID: 0}
+    - target: {fileID: 689938251514154178, guid: 9c2efb7ab5a3fc34e90a8721280eb9e7, type: 3}
+      propertyPath: normalColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 689938251514154178, guid: 9c2efb7ab5a3fc34e90a8721280eb9e7, type: 3}
+      propertyPath: normalColor.r
+      value: 0.8980392
+      objectReference: {fileID: 0}
     - target: {fileID: 689938251514154188, guid: 9c2efb7ab5a3fc34e90a8721280eb9e7, type: 3}
       propertyPath: m_Name
-      value: Enemy Bunny Variant
+      value: Red Enemy Bunny
       objectReference: {fileID: 0}
     - target: {fileID: 689938251682136949, guid: 9c2efb7ab5a3fc34e90a8721280eb9e7, type: 3}
       propertyPath: m_Color.b

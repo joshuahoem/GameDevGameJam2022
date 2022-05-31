@@ -387,7 +387,10 @@ public class NecroMan : MonoBehaviour
         movedThisTurn = false;
         attackedThisTurn = false;
         summonedThisTurn = false;
-        GetComponentInChildren<SpriteRenderer>().color = normalColor;
+        if (GetComponentInChildren<SpriteRenderer>() != null)
+        {
+            GetComponentInChildren<SpriteRenderer>().color = normalColor;
+        }
         if (!canRegenerate) {return;}
         sizeClass = maxHealth;
         displayText.GetComponent<TextMeshPro>().SetText(sizeClass.ToString());
