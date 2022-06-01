@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class NecroMan : MonoBehaviour
 {
@@ -35,6 +36,7 @@ public class NecroMan : MonoBehaviour
     [SerializeField] GameObject noMoveOutline;
     [SerializeField] GameObject highlightOutline;
     [SerializeField] TextMeshPro displayText;
+    [SerializeField] Button nextLevelButton;
     [SerializeField] private Vector3 targetPosition;
     private Vector3 currentPosition;
     List<GameObject> moveTiles = new List<GameObject>();
@@ -46,19 +48,24 @@ public class NecroMan : MonoBehaviour
     TurnManager turnManager;
     TeamManager teamManager;
     static GridMaker<int> grid;
+    public AudioSource audioSource;
+    public Animator animator;
+
+    //Effects
+    [SerializeField] public AudioClip  sfxPieceHurt, sfxPieceHitting, sfxPieceMoving, 
+                                sfxPieceSelected, sfxPickUpAnimal, sfxPieceSummoning;
     
     private void Start() {
         mouseControl = FindObjectOfType<MouseControl>();
         boardManager = FindObjectOfType<BoardManager>();
         turnManager = FindObjectOfType<TurnManager>();
         teamManager = FindObjectOfType<TeamManager>();
+        audioSource = GetComponent<AudioSource>();
+        animator = GetComponent<Animator>();
         grid = boardManager.gridMaker;
         currentPosition = RoundVector(transform.position);
         ShowMoves(false);
-
-        //Debug.Log(boardManager.gridMaker + " " + this.name);
         grid.SetValue(currentPosition, pieceValue); // 1 for necromancer
-        //Debug.Log(grid.GetX(currentPosition)+ " " + grid.GetY(currentPosition));
         targetPosition = currentPosition;
         moved = false;
         maxHealth = sizeClass;
@@ -66,6 +73,12 @@ public class NecroMan : MonoBehaviour
         if (displaySize)
         {
             displayText.GetComponent<TextMeshPro>().SetText(sizeClass.ToString());
+        }
+
+        if (pieceValue == -1)
+        {
+            //bad guy and you killed him reveal next button
+            nextLevelButton.gameObject.SetActive(false);
         }
     }
 
@@ -115,6 +128,16 @@ public class NecroMan : MonoBehaviour
             mouseControl.hoverSquareEnabled = false; //set to false after move, but dont follow mouse anymore
             movedThisTurn = true;
             CheckExhaust();
+            if (audioSource && sfxPieceMoving != null)
+            {
+                audioSource.PlayOneShot(sfxPieceMoving);
+            }
+            if (animator)
+            {
+            Debug.Log("moving");
+
+                animator.SetBool("Moving", true);
+            }
         }
         else if (positionValue != 0 && positionValue != 100) //100 is obstacles
         {
@@ -152,6 +175,16 @@ public class NecroMan : MonoBehaviour
                     ShowMoves(false);
                     attackedThisTurn = true;
                     CheckExhaust();
+                    if (audioSource && sfxPieceHitting != null)
+                    {
+                        audioSource.PlayOneShot(sfxPieceHitting);
+                    }
+                    if (animator)
+                    {
+                        Debug.Log("attack");
+
+                        animator.SetTrigger("Attack");
+                    }
                     
                 }
 
@@ -176,6 +209,11 @@ public class NecroMan : MonoBehaviour
 
     private void OnMouseDown()
     {
+        if (!moved) {return;}
+        if (audioSource && sfxPieceSelected != null)
+        {
+            audioSource.PlayOneShot(sfxPieceSelected);
+        }
         //determine if can select pieces (is it your turn?)
         if (turnManager.gameState == TurnManager.GameState.AI) {return;}
 
@@ -209,15 +247,25 @@ public class NecroMan : MonoBehaviour
         sizeClass -= damage;
         if (sizeClass < 0) {sizeClass = 0;}
         displayText.GetComponent<TextMeshPro>().SetText(sizeClass.ToString());
+        if (audioSource && sfxPieceHurt != null)
+        {
+            audioSource.PlayOneShot(sfxPieceHurt);
+        }
+        if (animator && animator.parameterCount>2)
+        {
+            Debug.Log("Hurt");
+            Debug.Log(gameObject.name);
+            animator.SetTrigger("Hurt");
+        }
 
         //check death
         if (sizeClass <= 0)
         {
             if (team != Team.Neutral)
             {
-                Debug.Log("enemy");
                 grid.SetValue(transform.position, 0);
                 StartCoroutine(DestroyGameObject());
+                CheckWinStatus();
             }
             else 
             {
@@ -226,7 +274,11 @@ public class NecroMan : MonoBehaviour
                 corpse = true;
                 grid.SetValue(transform.position, 0);
                 StartCoroutine(DestroyGameObject());
-                //animator
+                
+                if (audioSource && sfxPickUpAnimal != null)
+                {
+                    audioSource.PlayOneShot(sfxPickUpAnimal);
+                }
 
                 // Instantiate(corpsePrefab, RoundVector(transform.position), Quaternion.identity);
                 // StartCoroutine(DestroyGameObject());
@@ -237,20 +289,29 @@ public class NecroMan : MonoBehaviour
     private IEnumerator DestroyGameObject()
     {
         teamManager.RemovePiece(team, gameObject);
-        yield return new WaitForSeconds(0.1f); //death time
+        gameObject.GetComponentInChildren<SpriteRenderer>().enabled = false;
+        gameObject.GetComponentInChildren<TextMeshPro>().enabled = false;
+
+        yield return new WaitForSeconds(0.5f); //death time
         Destroy(gameObject);
     }
 
 
     private void MoveObject()
     {
+        if (moved) {return;}
+
         if (transform.position == targetPosition) 
         {
             moved = true; 
             currentPosition = RoundVector(transform.position);
-        }
+            if (animator)
+            {
+                Debug.Log("done moving");
 
-        if (moved) {return;}
+                animator.SetBool("Moving", false);
+            }
+        }
 
         float speed = minSpeed;
         speed = speed * Vector2.Distance(transform.position, targetPosition);
@@ -348,6 +409,15 @@ public class NecroMan : MonoBehaviour
         {
             //exhuasted
             GetComponentInChildren<SpriteRenderer>().color = exhaustColor;
+        }
+    }
+
+    private void CheckWinStatus()
+    {
+        if (pieceValue == -1)
+        {
+            //bad guy and you killed him reveal next button
+            nextLevelButton.gameObject.SetActive(true);
         }
     }
 

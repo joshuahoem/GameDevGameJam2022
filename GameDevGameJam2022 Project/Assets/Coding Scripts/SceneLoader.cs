@@ -7,6 +7,13 @@ public class SceneLoader : MonoBehaviour
 {
     [SerializeField] float buttonSFXloadTime = .2f;
     [SerializeField] AudioClip buttonClickSFX;
+    MusicManager musicManager;
+
+    private void Start() {
+        musicManager = FindObjectOfType<MusicManager>();
+        if (musicManager == null) {return;}
+        musicManager.LoadSong();
+    }
 
     public void StartGame()
     {
@@ -107,6 +114,11 @@ public class SceneLoader : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
 
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        if (currentSceneIndex+1 == 5)
+        {
+            Destroy(FindObjectOfType<InventorySystem>().gameObject);
+        }
+
         SceneManager.LoadScene(currentSceneIndex+1);
     }
 

@@ -82,6 +82,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 
     public void OnDrag(PointerEventData eventData)
     {
+        if (canvas == null) {canvas = FindObjectOfType<Canvas>();}
         rectTransform.anchoredPosition += (eventData.delta / canvas.scaleFactor);
     }
 
@@ -121,6 +122,11 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
             //success
             GameObject newpiece = Instantiate (creatureToSpawn, RoundVector(targetPos), Quaternion.identity);
             NecroMan necroMan = newpiece.GetComponent<NecroMan>();
+
+            if (necroMan.sfxPieceSummoning != null)
+            {
+                necroMan.GetComponent<AudioSource>().PlayOneShot(necroMan.sfxPieceSummoning, .5f);
+            }
 
             if (grid == null)
             {

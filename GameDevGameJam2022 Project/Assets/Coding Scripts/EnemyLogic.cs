@@ -45,6 +45,9 @@ public class EnemyLogic : MonoBehaviour
         GameObject piece = teamManager.enemyTeam[enemyPieceIndex];
             cameraMovement.CameraMoveToTarget(piece.transform.position.x, 
                 piece.transform.position.y);
+
+        piece.GetComponent<NecroMan>().audioSource.PlayOneShot(piece.GetComponent<NecroMan>().sfxPieceSelected);
+
         yield return new WaitForSeconds(enemyTurnDelay/2);
         //decide their move
 
@@ -82,6 +85,15 @@ public class EnemyLogic : MonoBehaviour
             move = true;
             grid.SetValue(piece.transform.position, 0);
             grid.SetValue(targetPosition,piece.GetComponent<NecroMan>().pieceValue);
+            piece.GetComponent<NecroMan>().audioSource.PlayOneShot(piece.GetComponent<NecroMan>().sfxPieceMoving);
+
+            if (piece.GetComponent<Animator>())
+            {
+                Debug.Log("moving" + " enemy");
+
+                piece.GetComponent<Animator>().SetBool("Moving", true);
+            }
+
 
             if (enemyPieceIndex++ < teamManager.enemyTeam.Count-1)
             {
@@ -98,12 +110,14 @@ public class EnemyLogic : MonoBehaviour
     {
         List<Vector3> target = new List<Vector3>();
         int moveDistance = targetPiece.GetComponent<NecroMan>().moveDistance;
+        int attackRange = targetPiece.GetComponent<NecroMan>().attackRange;
+
         //check available spaces around based on movement
-        for (int x = (Mathf.FloorToInt(targetPiece.transform.position.x - moveDistance)); 
-                x <= (Mathf.FloorToInt(targetPiece.transform.position.x + moveDistance)); x++)
+        for (int x = (Mathf.FloorToInt(targetPiece.transform.position.x - moveDistance - attackRange)); 
+                x <= (Mathf.FloorToInt(targetPiece.transform.position.x + moveDistance + attackRange)); x++)
         {
-            for (int y = (Mathf.FloorToInt(targetPiece.transform.position.y - moveDistance)); 
-                y <= (Mathf.FloorToInt(targetPiece.transform.position.y + moveDistance)); y++)
+            for (int y = (Mathf.FloorToInt(targetPiece.transform.position.y - moveDistance - attackRange)); 
+                y <= (Mathf.FloorToInt(targetPiece.transform.position.y + moveDistance + attackRange)); y++)
             {
                 if (grid.GetValue(x,y) == 1)
                 {
@@ -175,10 +189,6 @@ public class EnemyLogic : MonoBehaviour
     {
         int xValue = Mathf.FloorToInt(GameObject.Find("NecroMan").GetComponent<NecroMan>().transform.position.x);
         int yValue = Mathf.FloorToInt(GameObject.Find("NecroMan").GetComponent<NecroMan>().transform.position.y);
-
-        Debug.Log(xValue);
-        Debug.Log(yValue);
-
 
         int targetX = 0, targetY = 0, distance = 1000;
         int moveDistance = targetPiece.GetComponent<NecroMan>().moveDistance;
@@ -300,6 +310,12 @@ public class EnemyLogic : MonoBehaviour
         {
             targetPosition = Vector3.zero;
             move = false;
+            if (targetPiece.GetComponent<Animator>())
+            {
+                Debug.Log("done moving" + " enemy");
+
+                targetPiece.GetComponent<Animator>().SetBool("Moving", false);
+            }
             if (pieceToAttack == null) {return;}
             if (AttackRange())
             {
@@ -315,6 +331,12 @@ public class EnemyLogic : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         int attackDamage = targetPiece.GetComponent<NecroMan>().attackDamage;
         pieceToAttack.GetComponent<NecroMan>().TakeDamage(attackDamage);
+        if (targetPiece.GetComponent<Animator>())
+            {
+                Debug.Log("Attacking");
+
+                targetPiece.GetComponent<Animator>().SetTrigger("Attack");
+            }
     }
 
     private IEnumerator EndEnemyTurn()
