@@ -15,7 +15,7 @@ public class CharacterUpdate : MonoBehaviour
     [SerializeField] GameObject levelAlert;
     [SerializeField] TextMeshProUGUI levelPoints;
 
-    //[SerializeField] Image characterPicture;
+    [SerializeField] Image characterPicture;
 
     private void Awake() 
     {
@@ -34,6 +34,7 @@ public class CharacterUpdate : MonoBehaviour
 
             characterName.text = saveObject.nameOfCharacter;
             characterLevel.text = saveObject.level.ToString();
+            characterPicture.sprite = saveObject.raceObject.picture;
 
             if (saveObject.hasLevelUp)
             {

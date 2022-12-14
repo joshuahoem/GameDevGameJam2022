@@ -33,15 +33,21 @@ MonoBehaviour:
     upgradeCost: 1
     magicCost: 4
     staminaCost: 0
-    range: 0
+    range: 6
     damage: 0
-    magicDamage: 0
-    description: Testing now while jonah is watching
+    magicDamage: 7
+    description: 'Blast 1 (Hits all targets in range of 1)
+
+      Chance to burn
+      (roll d20. Success: 18+)'
   - level: 3
-    upgradeCost: 0
-    magicCost: 0
+    upgradeCost: 1
+    magicCost: 5
     staminaCost: 0
-    range: 0
+    range: 7
     damage: 0
-    magicDamage: 0
-    description: sill borger
+    magicDamage: 9
+    description: 'Blast 2 (Hits all targets in range of 2)
+
+      Chance to burn
+      (roll d20. Success: 18+)'

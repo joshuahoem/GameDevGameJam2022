@@ -963,7 +963,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 27.294586, y: -2.2746582}
+  m_AnchoredPosition: {x: 27.294617, y: -2.2746582}
   m_SizeDelta: {x: 809.7373, y: 686.9121}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1481344555 stripped
@@ -1626,6 +1626,54 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1030721050}
+    - target: {fileID: 1291064690, guid: a18a311ef4456884aa3368e5023123f5, type: 3}
+      propertyPath: lockedColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1291064690, guid: a18a311ef4456884aa3368e5023123f5, type: 3}
+      propertyPath: lockedColor.b
+      value: 0.3803922
+      objectReference: {fileID: 0}
+    - target: {fileID: 1291064690, guid: a18a311ef4456884aa3368e5023123f5, type: 3}
+      propertyPath: lockedColor.g
+      value: 0.14117648
+      objectReference: {fileID: 0}
+    - target: {fileID: 1291064690, guid: a18a311ef4456884aa3368e5023123f5, type: 3}
+      propertyPath: lockedColor.r
+      value: 0.04705883
+      objectReference: {fileID: 0}
+    - target: {fileID: 1291064690, guid: a18a311ef4456884aa3368e5023123f5, type: 3}
+      propertyPath: previewColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1291064690, guid: a18a311ef4456884aa3368e5023123f5, type: 3}
+      propertyPath: previewColor.b
+      value: 0.5188679
+      objectReference: {fileID: 0}
+    - target: {fileID: 1291064690, guid: a18a311ef4456884aa3368e5023123f5, type: 3}
+      propertyPath: previewColor.g
+      value: 0.48093182
+      objectReference: {fileID: 0}
+    - target: {fileID: 1291064690, guid: a18a311ef4456884aa3368e5023123f5, type: 3}
+      propertyPath: previewColor.r
+      value: 0.44299573
+      objectReference: {fileID: 0}
+    - target: {fileID: 1291064690, guid: a18a311ef4456884aa3368e5023123f5, type: 3}
+      propertyPath: unlockedColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1291064690, guid: a18a311ef4456884aa3368e5023123f5, type: 3}
+      propertyPath: unlockedColor.b
+      value: 0.23137257
+      objectReference: {fileID: 0}
+    - target: {fileID: 1291064690, guid: a18a311ef4456884aa3368e5023123f5, type: 3}
+      propertyPath: unlockedColor.g
+      value: 0.7254902
+      objectReference: {fileID: 0}
+    - target: {fileID: 1291064690, guid: a18a311ef4456884aa3368e5023123f5, type: 3}
+      propertyPath: unlockedColor.r
+      value: 0.96470594
+      objectReference: {fileID: 0}
     - target: {fileID: 8893455417679594024, guid: a18a311ef4456884aa3368e5023123f5, type: 3}
       propertyPath: m_Name
       value: AbilityInfoPanel
