@@ -1,0 +1,86 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4984130096535686974
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4984130096535686972}
+  - component: {fileID: 4984130096535686973}
+  m_Layer: 0
+  m_Name: SaveLoadManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4984130096535686972
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4984130096535686974}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4984130096535686973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4984130096535686974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58d43ca7b0911ce4fbee05a7fd52b19f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterClassInput: {fileID: 0}
+  raceInput: {fileID: 0}
+  characterName: {fileID: 0}
+  allRaces:
+  - {fileID: 11400000, guid: 38821682e868e504088de0a9cda255c1, type: 2}
+  - {fileID: 11400000, guid: 7396e20c70facf94f899755d37c8fd18, type: 2}
+  - {fileID: 11400000, guid: 8f77be5043aa47e49a7a499b32e41733, type: 2}
+  - {fileID: 11400000, guid: 4284feb8ffd17d94b8b8c7afaf2ff57b, type: 2}
+  - {fileID: 11400000, guid: b6cb62ea0e627c344bfddfd393422308, type: 2}
+  - {fileID: 11400000, guid: a89e1c2dec34b8745b21f2b3d61869d8, type: 2}
+  - {fileID: 11400000, guid: b2562b3eca09fa848af2b30dc5f14435, type: 2}
+  - {fileID: 11400000, guid: 0f33d565ca7271e40bf7fe9e9a426c3a, type: 2}
+  allClasses:
+  - {fileID: 11400000, guid: 7b2bc14e743928b498ea69b3dce76482, type: 2}
+  - {fileID: 11400000, guid: 13f1a99c9d4ff4b45a49e8fe365e3449, type: 2}
+  - {fileID: 11400000, guid: 57bf4416e4399f542a23ae3023cb548f, type: 2}
+  - {fileID: 11400000, guid: c8325c494ebb22e4aa1bacd4bbb3d3ce, type: 2}
+  - {fileID: 11400000, guid: 46a036bae519a884bbe7c446439fef79, type: 2}
+  - {fileID: 11400000, guid: d6d28b29a01389940bae4babd03dedaa, type: 2}
+  - {fileID: 11400000, guid: 992df62f9fc43e045bf2183a2c8bca9a, type: 2}
+  - {fileID: 11400000, guid: 82b0cc881611f184293dab746708dd68, type: 2}
+  - {fileID: 11400000, guid: e8c11779b1729ee42859ee7ceb78dc6c, type: 2}
+  - {fileID: 11400000, guid: d3c3b997b86a1fa48a0acb5aa5c60437, type: 2}
+  selectedCharacter: 0
+  characterSelectedName: {fileID: 0}
+  race: {fileID: 0}
+  characterSelectedClass: {fileID: 0}
+  level: {fileID: 0}
+  health: {fileID: 0}
+  stamina: {fileID: 0}
+  magic: {fileID: 0}
+  speed: {fileID: 0}
+  strength: {fileID: 0}
+  intelligence: {fileID: 0}
+  bonusAttackModifer: 5
+  bonusDefenseModifer: 10
+  holdingCapacityModifer: 2
+  bonusMagicAttackModifer: 5
+  bonusMagicDefenseModifer: 10
+  spellbookCapacityModifer: 2
+  movementModifer: 2

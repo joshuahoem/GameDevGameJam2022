@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdac2dd5884ec844785a4f4d681676ee, type: 3}
+  m_Name: Small Town
+  m_EditorClassIdentifier: 
+  allItems:
+  - {fileID: 11400000, guid: 7cf8fccb10b9f794ab612d1a8675376f, type: 2}
+  - {fileID: 11400000, guid: 6a6c5fb7fa7a52740a8913086a3b7272, type: 2}
+  - {fileID: 11400000, guid: f023d650b80a26d418cb6250029abdf4, type: 2}
+  - {fileID: 11400000, guid: fd9e1ffe87dd64841952345340fe9b51, type: 2}
+  - {fileID: 11400000, guid: 4878ed258ec8ca44da84926d0a8746d2, type: 2}
+  - {fileID: 11400000, guid: ace42cec82cda5c4aad3fbff64c068c3, type: 2}
