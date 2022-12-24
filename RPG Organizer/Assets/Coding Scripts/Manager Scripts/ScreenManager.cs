@@ -17,6 +17,8 @@ public class ScreenManager : MonoBehaviour
     [SerializeField] int GameSceneIndex = 6;
     [SerializeField] int mapSceneIndex = 7;
     [SerializeField] int optionSceneIndex = 8;
+    [SerializeField] int abilitieScene = 9;
+
 
 
 
@@ -72,10 +74,22 @@ public class ScreenManager : MonoBehaviour
         Invoke("LoadNextScene", sceneLoadTime);
     }
 
+    public void LoadAbilitieScene()
+    {
+        scene = abilitieScene;
+        Invoke("LoadNextScene", sceneLoadTime);
+    }
+
+
+    
+
     private void LoadNextScene()
     {
         SceneManager.LoadScene(scene);
     }
+
+
+
 
     public void QuitGame()
     {

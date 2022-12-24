@@ -22,33 +22,64 @@ public class AbilityInventory : MonoBehaviour
 
         AbilityPanelManager panelManager = FindObjectOfType<AbilityPanelManager>();
         panelManager.onAbilityUnlocked += Subscriber_UnlockAbility;
+
+        SaveState saveState = NewSaveSystem.FindSaveState();
+        saveState.screenState = ScreenState.AbilityScreen;
+        NewSaveSystem.SaveStateOfGame(saveState);
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyUp("a"))
+        {
+            Debug.Log("a");
+            save.abilityInventory.Clear();
+            SaveChanges();
+        }
+    }
     private void Subscriber_UnlockAbility(object sender, AbilityPanelManager.UnlockAbilityEventArgs e)
     {   
-        Debug.Log("purchase ability");
-        AbilitySaveObject abilitySaveObject = new AbilitySaveObject(e._ability, 1, true);
-        
-        int checkInt = 0;
+        AbilitySaveObject abilitySaveObject = ReturnNewAbilityObject(e._ability.ability);
+
+        if (abilitySaveObject != null)
+        {
+            Debug.Log("does not have it");
+            abilitySaveObject.unlocked = true;
+            save.abilityInventory.Add(abilitySaveObject);
+        }
+        else
+        {
+            Debug.Log("has it");
+        }
+
+        SaveChanges();
+
+        FindObjectOfType<AbilityTabManager>().UpdateTabs(e._ability.ability); //change to an event to update instead
+
+        foreach (AbilityInstanceObject instance in FindObjectsOfType<AbilityInstanceObject>())
+        {
+            if (e._ability.ability == instance.abilitySO.ability)
+            {
+                instance.abilitySO = abilitySaveObject;
+                Debug.Log("replace");
+            }
+        }
+    }
+
+    public AbilitySaveObject ReturnNewAbilityObject(Ability _ability)
+    {
+        save = FindCurrentSave();
+        AbilitySaveObject abilitySaveObject = new AbilitySaveObject(_ability, AbilityType.classAblity, 1, 0, true);
+
         foreach (AbilitySaveObject item in save.abilityInventory)
         {
             if (item.ability == abilitySaveObject.ability)
             {
-                Debug.Log("already contains");
-            }
-            else
-            {
-                checkInt++;
+                return null;
             }
         }
 
-        if (checkInt == save.abilityInventory.Count)
-        {
-            Debug.Log("does not have it");
-            save.abilityInventory.Add(abilitySaveObject);
-        }
-
-        SaveChanges();
+        return abilitySaveObject;
     }
 
     private SaveObject FindCurrentSave()

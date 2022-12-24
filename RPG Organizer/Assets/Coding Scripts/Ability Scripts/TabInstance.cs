@@ -9,9 +9,10 @@ public class TabInstance : MonoBehaviour
     public void DisplayNewLevel()
     {
         AbilityPanelManager panelManager = FindObjectOfType<AbilityPanelManager>();
-        Ability _ability = panelManager.ability;
+        AbilitySaveObject _ability = panelManager.abilitySO;
+        _ability.viewingLevel = levelIndex;
 
-        panelManager.DisplayAbility(_ability, levelIndex);
+        panelManager.DisplayAbility(_ability);
 
     }
 }

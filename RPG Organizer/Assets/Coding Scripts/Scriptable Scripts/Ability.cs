@@ -37,18 +37,27 @@ public class Ability : ScriptableObject
 
 }
 
+public enum AbilityType
+{
+    classAblity,
+    raceAbility
+}
+
 [System.Serializable] public class AbilitySaveObject
 {
     public Ability ability;
-    // public int ID;
+    public AbilityType abilityType;
     public int currentLevel;
+    public int viewingLevel;
     public bool unlocked;
     
-    public AbilitySaveObject(Ability _ability, /*int _ID,*/ int _level, bool _unlocked)
+    public AbilitySaveObject(Ability _ability, AbilityType _abilityType, int _level,
+        int _viewingLevel, bool _unlocked)
     {
         ability = _ability;
-        // ID = _ID;
+        abilityType = _abilityType;
         currentLevel = _level;
+        viewingLevel = _viewingLevel;
         unlocked = _unlocked;
     }
 }

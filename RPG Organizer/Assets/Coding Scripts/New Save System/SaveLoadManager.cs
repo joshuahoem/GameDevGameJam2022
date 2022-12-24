@@ -17,8 +17,8 @@ public class SaveLoadManager : MonoBehaviour
     Race characterRace;
     Class characterClass;
 
-    [SerializeField] List<Race> allRaces = new List<Race>();
-    [SerializeField] List<Class> allClasses = new List<Class>();
+    [SerializeField] public Race[] allRaces;
+    [SerializeField] public Class[] allClasses;
     #endregion
 
     #region //Load Info
@@ -144,11 +144,10 @@ public class SaveLoadManager : MonoBehaviour
         SaveState saveState = new SaveState { numberOfCharacters = numberofCharactersPrior+1 };
 
         string character = JsonUtility.ToJson(saveObject);
-        string stateOfGame = JsonUtility.ToJson(saveState);
 
         // Debug.Log(numberofCharactersPrior+1 + " number of characters now");
         NewSaveSystem.SaveCharacter(character, numberofCharactersPrior+1);
-        NewSaveSystem.SaveStateOfGame(stateOfGame);
+        NewSaveSystem.SaveStateOfGame(saveState);
     }
 
     public void LoadCharacter()

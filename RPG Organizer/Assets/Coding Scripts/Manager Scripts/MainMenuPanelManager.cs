@@ -11,7 +11,7 @@ public class MainMenuPanelManager : MonoBehaviour
 
     private void Start() 
     {
-        Debug.Log(PlayerPrefs.GetInt("hasStarted"));
+        // Debug.Log(PlayerPrefs.GetInt("hasStarted"));
 
         if (PlayerPrefs.HasKey("hasStarted"))
         {

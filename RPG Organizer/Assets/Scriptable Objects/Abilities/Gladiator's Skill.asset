@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3a5683874466c64da079d94c09f1a43, type: 3}
+  m_Name: Gladiator's Skill
+  m_EditorClassIdentifier: 
+  abilityName: Gladiator's Skill
+  abilitySpriteIcon: {fileID: 21300000, guid: 2d14cced9c63cbb42bb0b8c6fe45bc0e, type: 3}
+  borderColor: {r: 0.7155927, g: 0.1549929, b: 0.764151, a: 1}
+  costType: 1
+  unlockCost: 0
+  allAbilityLevels:
+  - level: 1
+    upgradeCost: 0
+    magicCost: 0
+    staminaCost: 1
+    range: 0
+    damage: 0
+    magicDamage: 0
+    description: Add 1 to Attack for this turn
+  - level: 2
+    upgradeCost: 0
+    magicCost: 0
+    staminaCost: 1
+    range: 0
+    damage: 0
+    magicDamage: 0
+    description: Add 2 to attack for this turn

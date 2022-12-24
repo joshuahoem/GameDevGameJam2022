@@ -20,15 +20,22 @@ public class AbilityTabManager : MonoBehaviour
 
     void Start()
     {
-        AbilityInstanceObject abilityInstanceObject = FindObjectOfType<AbilityInstanceObject>();
-        abilityInstanceObject.onAbilityClicked += Subscriber_OnEventClicked;
+        EventHandler eventHandler = FindObjectOfType<EventHandler>();
+        eventHandler.onAbilityClicked += Subscriber_OnEventClicked;
+
+        AbilityPanelManager panelManager = FindObjectOfType<AbilityPanelManager>();
+        panelManager.onAbilityUnlocked += Subscriber_UnlockAbility;
     }
 
     private void Subscriber_OnEventClicked(object sender, AbilityPanelManager.UnlockAbilityEventArgs e)
     { 
+        foreach (GameObject tab in tabs)
+        {
+            Destroy(tab);
+        }
         tabs.Clear();
-        save = FindCurrentSave();
-        for (int i=0; i < e._ability.allAbilityLevels.Length; i++)
+        save = NewSaveSystem.FindCurrentSave();
+        for (int i=0; i < e._ability.ability.allAbilityLevels.Length; i++)
         {
             GameObject newTab = Instantiate(tabPrefab, transform.position, transform.rotation);
             newTab.transform.SetParent(parentTabManager, false);
@@ -37,60 +44,70 @@ public class AbilityTabManager : MonoBehaviour
             tabs.Add(newTab);
         }
 
+        UpdateTabs(e._ability.ability);
+        
+    }
+
+    private void Subscriber_UnlockAbility(object sender, AbilityPanelManager.UnlockAbilityEventArgs e)
+    {
+        Debug.Log("here");
+        UpdateTabs(e._ability.ability);
+        Debug.Log(e._ability.currentLevel);
+    }
+
+    public void UpdateTabs(Ability _ability)
+    {
+        save = NewSaveSystem.FindCurrentSave();
+        int checkInt = 0;
         foreach (AbilitySaveObject saveObject in save.abilityInventory)
         {
-            if (saveObject.ability == e._ability)
+            if (saveObject.ability == _ability)
             {
+                checkInt++;
                 foreach (GameObject tab in tabs)
                 {
                     if (tab.GetComponent<TabInstance>().levelIndex < saveObject.currentLevel)
                     {
+                        //unlocked
                         tab.GetComponent<Image>().color = unlockedColor;
+                        tab.GetComponent<Button>().interactable = true;
                     }
                     else if (tab.GetComponent<TabInstance>().levelIndex > saveObject.currentLevel)
                     {
+                        //locked
                         tab.GetComponent<Image>().color = lockedColor;
                         tab.GetComponent<Button>().interactable = false;
                     }
                     else
                     {
+                        //preview
                         tab.GetComponent<Image>().color = previewColor;
+                        tab.GetComponent<Button>().interactable = true;
                     }
                 }
                 
             }
         }
-    }
 
-        private SaveObject FindCurrentSave()
-    {
-        string SAVE_FOLDER = Application.dataPath + "/Saves/";
-
-        if (File.Exists(SAVE_FOLDER + "/character_manager.txt"))
+        if (checkInt == 0)
         {
-            string saveString = File.ReadAllText(SAVE_FOLDER + "/character_manager.txt");
-
-            SaveState saveState = JsonUtility.FromJson<SaveState>(saveString);
-
-            charString = saveState.fileIndexString;
-
-            if (File.Exists(SAVE_FOLDER + "/save_" + charString + ".txt"))
+            // none found
+            foreach (GameObject tab in tabs)
             {
-                string newSaveString = File.ReadAllText(SAVE_FOLDER + "/save_" + charString + ".txt");
-
-                return JsonUtility.FromJson<SaveObject>(newSaveString);
-
-            }
-            else
-            {
-                Debug.Log("Could not find character folder!");
-                return null;
+                if (tab.GetComponent<TabInstance>().levelIndex == 0)
+                {
+                    //preview
+                    tab.GetComponent<Image>().color = previewColor;
+                    tab.GetComponent<Button>().interactable = true;
+                }
+                else
+                {
+                    //locked
+                    tab.GetComponent<Image>().color = lockedColor;
+                    tab.GetComponent<Button>().interactable = false;
+                }
             }
         }
-        else
-        {
-            Debug.Log("Could not find character manager folder!");
-            return null;
-        }
     }
+        
 }

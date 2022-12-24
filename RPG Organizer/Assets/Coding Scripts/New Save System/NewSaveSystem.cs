@@ -7,6 +7,7 @@ public static class NewSaveSystem
 {
     public static readonly string SAVE_FOLDER = Application.dataPath + "/Saves/";
 
+
     public static void Init()
     {
         if (!Directory.Exists(SAVE_FOLDER))
@@ -43,11 +44,13 @@ public static class NewSaveSystem
         File.WriteAllText(SAVE_FOLDER + "/save_" + saveNumber + ".txt", saveString);
     }
 
-    public static void SaveStateOfGame(string saveString)
+    public static void SaveStateOfGame(SaveState saveState)
     {
+        string stateOfGame = JsonUtility.ToJson(saveState);
+
         if (File.Exists(SAVE_FOLDER + "/character_manager.txt"))
         {
-            File.WriteAllText(SAVE_FOLDER + "/character_manager.txt", saveString);
+            File.WriteAllText(SAVE_FOLDER + "/character_manager.txt", stateOfGame);
         }
     }
 
@@ -86,6 +89,61 @@ public static class NewSaveSystem
         {
             Debug.LogError("could not find folder!");
             return 0;
+        }
+    }
+
+    public static SaveState FindSaveState()
+    {
+        if (File.Exists(SAVE_FOLDER + "/character_manager.txt"))
+        {
+            string saveString = File.ReadAllText(SAVE_FOLDER + "/character_manager.txt");
+
+            return JsonUtility.FromJson<SaveState>(saveString);
+        }
+
+        return null;
+    }
+
+    public static SaveObject FindCurrentSave()
+    {
+        if (File.Exists(SAVE_FOLDER + "/character_manager.txt"))
+        {
+            string saveString = File.ReadAllText(SAVE_FOLDER + "/character_manager.txt");
+
+            SaveState saveState = JsonUtility.FromJson<SaveState>(saveString);
+
+            string charString = saveState.fileIndexString;
+
+            if (File.Exists(SAVE_FOLDER + "/save_" + charString + ".txt"))
+            {
+                string newSaveString = File.ReadAllText(SAVE_FOLDER + "/save_" + charString + ".txt");
+
+                return JsonUtility.FromJson<SaveObject>(newSaveString);
+
+            }
+            else
+            {
+                Debug.Log("Could not find character folder!");
+                return null;
+            }
+        }
+        else
+        {
+            Debug.Log("Could not find character manager folder!");
+            return null;
+        }
+    }
+
+    public static void SaveChanges(SaveObject save)
+    {
+        if (File.Exists(SAVE_FOLDER + "/character_manager.txt"))
+        {
+            string saveString = File.ReadAllText(SAVE_FOLDER + "/character_manager.txt");
+            SaveState saveState = JsonUtility.FromJson<SaveState>(saveString);
+            string charString = saveState.fileIndexString;
+
+            string newCharacterString = JsonUtility.ToJson(save);
+            File.WriteAllText(SAVE_FOLDER + "/save_" + charString + ".txt", newCharacterString);
         }
     }
 }

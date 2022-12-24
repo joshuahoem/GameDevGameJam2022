@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3a5683874466c64da079d94c09f1a43, type: 3}
+  m_Name: Zap
+  m_EditorClassIdentifier: 
+  abilityName: Zap
+  abilitySpriteIcon: {fileID: -2017328032291909308, guid: ec113a53ec5594b4eb61fe534af612fe, type: 3}
+  borderColor: {r: 1, g: 0.99997807, b: 0.0047169924, a: 0.92941177}
+  costType: 0
+  unlockCost: 0
+  allAbilityLevels:
+  - level: 1
+    upgradeCost: 0
+    magicCost: 2
+    staminaCost: 0
+    range: 3
+    damage: 0
+    magicDamage: 2
+    description: Can also hit other nearby targets within the same range. Can hit
+      up to 3 targets, including original target
