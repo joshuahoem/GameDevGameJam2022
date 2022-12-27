@@ -5,25 +5,27 @@ using UnityEngine;
 public class ArrowDirectionTest : MonoBehaviour
 {
     [SerializeField] GameObject arrowObject;
-    [SerializeField] GameObject startingObject;
-    [SerializeField] GameObject endingObject;
-    [SerializeField] Transform parentTransform;
+    [SerializeField] public GameObject startingObject;
+    [SerializeField] public GameObject endingObject;
+    [SerializeField] public Transform parentTransform;
     [SerializeField] float scaleX;
 
 
-    GameObject arrowInstance;
+    public GameObject arrowInstance;
 
     private void Start() {
+        
+    }
+    // private void Update() {
+    //     UpdateArrow();
+    // }
+
+    public void UpdateArrow(string abilityName)
+    {
         GameObject _arrow = Instantiate(arrowObject, transform.position, Quaternion.identity);
         _arrow.transform.SetParent(parentTransform,false);
         arrowInstance = _arrow;
-    }
-    private void Update() {
-        UpdateArrow();
-    }
 
-    private void UpdateArrow()
-    {
         Vector2 spawnLocation = Vector3.Lerp(startingObject.transform.position, endingObject.transform.position, 0.5f);
 
         float deltaX = endingObject.transform.position.x - startingObject.transform.position.x;
@@ -39,8 +41,9 @@ public class ArrowDirectionTest : MonoBehaviour
         // GameObject arrow = Instantiate(arrowObject, transform.position, Quaternion.identity);
         arrowInstance.transform.eulerAngles = spawnRotation;
         arrowInstance.transform.position = spawnLocation;
+        arrowInstance.name = abilityName;
         // GameObject.FindWithTag("ArrowBody").transform.localScale = new Vector3(scaleFactor,1,1);
-        arrowInstance.transform.localScale = new Vector3(scaleFactor,1,1);
+        // arrowInstance.transform.localScale = new Vector3(scaleFactor,1,1);
 
         // Debug.Log(Vector2.Distance(startingObject.transform.position, endingObject.transform.position));
 

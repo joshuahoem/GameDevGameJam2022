@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class LocalStatDisplay : MonoBehaviour
 {
+    [Header("Main Info")]
     #region //TMP references
     [SerializeField] TextMeshProUGUI nameOfCharacter;
     [SerializeField] TextMeshProUGUI race;
@@ -21,6 +22,7 @@ public class LocalStatDisplay : MonoBehaviour
     [SerializeField] Image imageReference;
     #endregion
 
+    [Header("Bonus Stats")]
     #region //Bonus Stats from Stats
     [SerializeField] TextMeshProUGUI bonusAttack;
     [SerializeField] TextMeshProUGUI bonusDefense;
@@ -31,6 +33,7 @@ public class LocalStatDisplay : MonoBehaviour
     [SerializeField] TextMeshProUGUI movement;
     #endregion
 
+    [Header("Eqipment Bonus")]
     #region Bonus Stats from Equipment
     [SerializeField] TextMeshProUGUI bonusAttackEquipment;
     [SerializeField] TextMeshProUGUI bonusDefenseEquipment;
@@ -41,6 +44,22 @@ public class LocalStatDisplay : MonoBehaviour
     [SerializeField] TextMeshProUGUI totalDefenseEquipment;
     [SerializeField] TextMeshProUGUI totalMagicAttackEquipment;
     [SerializeField] TextMeshProUGUI totalMagicDefenseEquipment;
+    #endregion
+
+    [Header("Base Bonus")]
+    #region Bonus Base Stats
+    [SerializeField] TextMeshProUGUI bonusHealthTMP;
+    [SerializeField] TextMeshProUGUI bonusStaminaTMP;
+    [SerializeField] TextMeshProUGUI bonusMagicTMP;
+    [SerializeField] TextMeshProUGUI bonusStrengthTMP;
+    [SerializeField] TextMeshProUGUI bonusIntelligenceTMP;
+    [SerializeField] TextMeshProUGUI bonusSpeedTMP;
+    int bonusHealth = 0;
+    int bonusStamina = 0;
+    int bonusMagic = 0;
+    int bonusStrength = 0;
+    int bonusIntelligence = 0;
+    int bonusSpeed = 0;
     #endregion
 
     public SaveObject save;
@@ -55,6 +74,7 @@ public class LocalStatDisplay : MonoBehaviour
     public void UpdateUI()
     {
         FindCurrentSave();
+        LoadBaseStatBonus();
         LoadCurrentSave();
         UpdateBonusUI();
     }
@@ -97,14 +117,21 @@ public class LocalStatDisplay : MonoBehaviour
         levelText.text = save.level.ToString();
         if (save.raceObject.picture != null)
             { imageReference.sprite = save.raceObject.picture; }
+        
+        int _bonusHealth = bonusHealth + save.baseHealth;
+        int _bonusStamina = bonusStamina + save.baseStamina;
+        int _bonusMagic = bonusMagic + save.baseMagic;
+        int _bonusStrength = bonusStrength + save.baseStrength;
+        int _bonusIntelligence = bonusIntelligence + save.baseIntelligence;
+        int _bonusSpeed = bonusSpeed + save.baseSpeed;
 
-        health.text = save.currentHealth + "/" + save.baseHealth;
-        stamina.text = save.currentStamina + "/" + save.baseStamina;
-        magic.text = save.currentMagic + "/" + save.baseMagic;
+        health.text = save.currentHealth + "/" + _bonusHealth;
+        stamina.text = save.currentStamina + "/" + _bonusStamina;
+        magic.text = save.currentMagic + "/" + _bonusMagic;
 
-        strength.text = save.baseStrength.ToString();
-        intelligence.text = save.baseIntelligence.ToString();
-        speed.text = save.baseSpeed.ToString();
+        strength.text = _bonusStrength.ToString();
+        intelligence.text = _bonusIntelligence.ToString();
+        speed.text = _bonusSpeed.ToString();
 
         //Bonus Stats
         bonusAttack.text = save.bonusAttack.ToString();
@@ -166,6 +193,34 @@ public class LocalStatDisplay : MonoBehaviour
         totalMagicAttackEquipment.text = _totalMagicAttack.ToString();
         totalMagicDefenseEquipment.text = _totalMagicDefense.ToString();
 
+
+    }
+
+    private void LoadBaseStatBonus()
+    {
+        bonusHealth = 0;
+        bonusStamina = 0;
+        bonusMagic = 0;
+        bonusStrength = 0;
+        bonusIntelligence = 0;
+        bonusSpeed = 0;
+
+        foreach (PerkObject perkObject in save.perks)
+        {
+            bonusHealth += perkObject.perk.bonusHealth * perkObject.count;
+            bonusStamina += perkObject.perk.bonusStamina * perkObject.count;
+            bonusMagic += perkObject.perk.bonusMagic * perkObject.count;
+            bonusStrength += perkObject.perk.bonusStrength * perkObject.count;
+            bonusIntelligence += perkObject.perk.bonusIntelligence * perkObject.count;
+            bonusSpeed += perkObject.perk.bonusSpeed * perkObject.count;
+        }
+
+        bonusHealthTMP.text = bonusHealth.ToString();
+        bonusStaminaTMP.text = bonusStamina.ToString();
+        bonusMagicTMP.text = bonusMagic.ToString();
+        bonusStrengthTMP.text = bonusStrength.ToString();
+        bonusIntelligenceTMP.text = bonusIntelligence.ToString();
+        bonusSpeedTMP.text = bonusSpeed.ToString();
 
     }
 }

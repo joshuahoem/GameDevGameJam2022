@@ -13,6 +13,9 @@ public class AbilityInstanceObject : MonoBehaviour
     [Space(20)]
     [Header("Unlocked Info")]
     [SerializeField] GameObject[] abilitiesThatUnlock;
+    List<GameObject> arrows = new List<GameObject>();
+    [SerializeField] Transform parentTransformForArrows;
+
 
     private void Start() 
     {
@@ -38,6 +41,19 @@ public class AbilityInstanceObject : MonoBehaviour
 
         foreach (GameObject ability in abilitiesThatUnlock)
         {
+            ability.GetComponent<ArrowDirectionTest>().startingObject = this.gameObject;
+            ability.GetComponent<ArrowDirectionTest>().endingObject = ability;
+            ability.GetComponent<ArrowDirectionTest>().UpdateArrow(ability.name);
+            arrows.Add(ability.GetComponent<ArrowDirectionTest>().arrowInstance);
+        }
+
+        foreach (GameObject arrow in arrows)
+        {
+            arrow.SetActive(false);
+        }
+
+        foreach (GameObject ability in abilitiesThatUnlock)
+        {
             ability.GetComponent<Button>().interactable = false;
         }
 
@@ -53,9 +69,16 @@ public class AbilityInstanceObject : MonoBehaviour
                     {
                         ability.GetComponent<Button>().interactable = true;
                     }
+                    foreach (GameObject arrow in arrows)
+                    {
+                        arrow.SetActive(true);
+                    }
                 }
             }
         }
+
+
+        
     }
 
     private AbilitySaveObject GetAbilitySaveObject()
@@ -91,6 +114,10 @@ public class AbilityInstanceObject : MonoBehaviour
             foreach (GameObject ability in abilitiesThatUnlock)
             {
                 ability.GetComponent<Button>().interactable = true;
+            }
+            foreach (GameObject arrow in arrows)
+            {
+                arrow.SetActive(true);
             }
         }
         

@@ -46,6 +46,7 @@ public class SaveObject
 
     public List<AbilitySaveObject> abilityInventory = new List<AbilitySaveObject>();
     public List<InventoryItem> inventory = new List<InventoryItem>();
+    public List<PerkObject> perks = new List<PerkObject>();
     public InventoryItem[] equipment;
 
     

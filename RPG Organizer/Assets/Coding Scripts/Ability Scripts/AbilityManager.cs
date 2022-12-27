@@ -7,13 +7,20 @@ public class AbilityManager : MonoBehaviour
     SaveState saveState;
     SaveObject save;
     [SerializeField] GameObject abilityObjectPrefab;
+    [SerializeField] GameObject perkPrefab;
+
     [SerializeField] GameObject abilityPanelObject;
     List<GameObject> abilityCardPrefabs = new List<GameObject>();
+    List<GameObject> perkPrefabList = new List<GameObject>();
 
     [SerializeField] GameObject raceAbilityTab;
     [SerializeField] GameObject classAbilityTab;
+    [SerializeField] GameObject perkTab;
+
     [SerializeField] Transform raceAbilityContent;
     [SerializeField] Transform classAbilityContent;
+    [SerializeField] Transform perkContent;
+
 
     
     
@@ -24,6 +31,7 @@ public class AbilityManager : MonoBehaviour
 
         raceAbilityTab.SetActive(true);
         classAbilityTab.SetActive(false);
+        perkTab.SetActive(false);
         abilityPanelObject.SetActive(false);
 
         saveState.screenState = ScreenState.CharacterInfo;
@@ -90,4 +98,20 @@ public class AbilityManager : MonoBehaviour
         abilityPanelObject.GetComponent<AbilityPanelManager>().DisplayAbility(_abilitySO);
     }
 
+    public void LoadPerks()
+    {
+        foreach (PerkObject perk in save.perks)
+        {
+            foreach (GameObject perkObject in perkPrefabList)
+            {
+                Destroy(perkObject);
+            }
+            perkPrefabList.Clear();
+
+            GameObject _perk = Instantiate(perkPrefab, transform.position, transform.rotation);
+            _perk.transform.SetParent(perkContent, false);
+            _perk.GetComponent<PerkInstanceObject>().DisplayPerk(perk);
+            perkPrefabList.Add(_perk);
+        }
+    }
 }

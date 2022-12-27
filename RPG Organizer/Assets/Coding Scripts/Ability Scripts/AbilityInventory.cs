@@ -34,6 +34,7 @@ public class AbilityInventory : MonoBehaviour
         {
             Debug.Log("a");
             save.abilityInventory.Clear();
+            save.perks.Clear();
             SaveChanges();
         }
     }

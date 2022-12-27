@@ -12,9 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3a5683874466c64da079d94c09f1a43, type: 3}
   m_Name: Energy Drain
   m_EditorClassIdentifier: 
-  abilityName: 
-  abilitySpriteIcon: {fileID: 0}
-  borderColor: {r: 0, g: 0, b: 0, a: 0}
+  abilityName: Energy Drain
+  abilitySpriteIcon: {fileID: 21300000, guid: 73beda78766d64842bd8e9ad2dfac442, type: 3}
+  borderColor: {r: 0.032751877, g: 0.3018868, b: 0.04967432, a: 0.89411765}
   costType: 0
-  unlockCost: 0
-  allAbilityLevels: []
+  unlockCost: 1
+  allAbilityLevels:
+  - level: 1
+    upgradeCost: 0
+    magicCost: 2
+    staminaCost: 0
+    range: 6
+    damage: 0
+    magicDamage: 5
+    description: Target takes damage as health or stamina (User chooses). Regain
+      half of the health or stamina dealt

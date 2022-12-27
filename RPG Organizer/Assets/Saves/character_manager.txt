@@ -1,1 +1,1 @@
-{"numberOfCharacters":1,"fileIndexString":"1","raceAbilityBool":false,"classAbilityBool":true,"screenState":1}
+{"numberOfCharacters":1,"fileIndexString":"1","raceAbilityBool":false,"classAbilityBool":true,"screenState":0}

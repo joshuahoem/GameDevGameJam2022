@@ -12,9 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3a5683874466c64da079d94c09f1a43, type: 3}
   m_Name: Power Zap
   m_EditorClassIdentifier: 
-  abilityName: 
-  abilitySpriteIcon: {fileID: 0}
-  borderColor: {r: 0, g: 0, b: 0, a: 0}
+  abilityName: Power Zap
+  abilitySpriteIcon: {fileID: 21300000, guid: 5bc4256812f4f4c4795ce9c235cb0993, type: 3}
+  borderColor: {r: 0.5754717, g: 0.04071733, b: 0.04071733, a: 0.9490196}
   costType: 0
-  unlockCost: 0
-  allAbilityLevels: []
+  unlockCost: 1
+  allAbilityLevels:
+  - level: 1
+    upgradeCost: 0
+    magicCost: 3
+    staminaCost: 0
+    range: 3
+    damage: 0
+    magicDamage: 2
+    description: Hit all enemies in range. Gain magic for each enemy that takes damage
+      from this.

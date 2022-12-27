@@ -25,10 +25,7 @@ MonoBehaviour:
     range: 5
     damage: 0
     magicDamage: 5
-    description: 'Blast 1 (Hits all targets in range of 1)
-
-      Chance to burn
-      (roll d20. Success: 18+)'
+    description: 'Chance to burn (roll d20. Success: 18+)'
   - level: 2
     upgradeCost: 1
     magicCost: 4
@@ -36,10 +33,7 @@ MonoBehaviour:
     range: 6
     damage: 0
     magicDamage: 7
-    description: 'Blast 1 (Hits all targets in range of 1)
-
-      Chance to burn
-      (roll d20. Success: 18+)'
+    description: 'Chance to burn (roll d20. Success: 18+)'
   - level: 3
     upgradeCost: 1
     magicCost: 5
@@ -47,7 +41,4 @@ MonoBehaviour:
     range: 7
     damage: 0
     magicDamage: 9
-    description: 'Blast 2 (Hits all targets in range of 2)
-
-      Chance to burn
-      (roll d20. Success: 18+)'
+    description: 'Chance to burn (roll d20. Success: 18+)'

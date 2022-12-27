@@ -12,9 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3a5683874466c64da079d94c09f1a43, type: 3}
   m_Name: Lightning Surge
   m_EditorClassIdentifier: 
-  abilityName: 
-  abilitySpriteIcon: {fileID: 0}
-  borderColor: {r: 0, g: 0, b: 0, a: 0}
+  abilityName: Lightning Surge
+  abilitySpriteIcon: {fileID: 21300000, guid: dcf0bc503da2e5344b624558ca3f0a1d, type: 3}
+  borderColor: {r: 0.9056604, g: 0.8408832, b: 0.18369527, a: 0.7647059}
   costType: 0
-  unlockCost: 0
-  allAbilityLevels: []
+  unlockCost: 1
+  allAbilityLevels:
+  - level: 1
+    upgradeCost: 0
+    magicCost: 3
+    staminaCost: 0
+    range: 4
+    damage: 0
+    magicDamage: 4
+    description: Hits up to 4 additional targets in range of the original target

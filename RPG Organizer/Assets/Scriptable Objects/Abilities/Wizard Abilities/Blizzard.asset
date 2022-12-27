@@ -12,9 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3a5683874466c64da079d94c09f1a43, type: 3}
   m_Name: Blizzard
   m_EditorClassIdentifier: 
-  abilityName: 
-  abilitySpriteIcon: {fileID: 0}
-  borderColor: {r: 0, g: 0, b: 0, a: 0}
+  abilityName: Blizzard
+  abilitySpriteIcon: {fileID: 21300000, guid: 201385dc4e7024f4285740a6bbd34312, type: 3}
+  borderColor: {r: 0.17007834, g: 0.8509804, b: 0.9245283, a: 0.9137255}
   costType: 0
-  unlockCost: 0
-  allAbilityLevels: []
+  unlockCost: 1
+  allAbilityLevels:
+  - level: 1
+    upgradeCost: 0
+    magicCost: 5
+    staminaCost: 0
+    range: 99
+    damage: 0
+    magicDamage: 5
+    description: Hits all enemies. Cannot miss. Chance to freeze (19+)
