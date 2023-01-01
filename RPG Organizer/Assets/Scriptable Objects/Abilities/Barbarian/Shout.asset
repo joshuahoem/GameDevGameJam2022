@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3a5683874466c64da079d94c09f1a43, type: 3}
+  m_Name: Shout
+  m_EditorClassIdentifier: 
+  abilityName: Shout
+  abilitySpriteIcon: {fileID: 0}
+  borderColor: {r: 0.105882354, g: 0.23116945, b: 0.68235296, a: 0.84313726}
+  costType: 1
+  unlockCost: 0
+  allAbilityLevels:
+  - level: 1
+    upgradeCost: 0
+    magicCost: 0
+    staminaCost: 1
+    range: 8
+    damage: 0
+    magicDamage: 0
+    description: Targets all enemies in range. Movement is reduced by 3 for each
+      target for one round of combat

@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class PerkPanelManager : MonoBehaviour
 {
+    public event EventHandler<UnlockPerkEventArgs> onPerkUnlocked;
     [SerializeField] public GameObject perkPanelObject;
     Perk perk;
 
@@ -55,19 +57,28 @@ public class PerkPanelManager : MonoBehaviour
     public void UnlockPerk()
     {
         SaveObject save = NewSaveSystem.FindCurrentSave();
+        PerkObject foundPerkObject;
         foreach (PerkObject _perkObject in save.perks)
         {
             if (_perkObject.perk == perk)
             {
                 _perkObject.count++;
                 NewSaveSystem.SaveChanges(save);
+                foundPerkObject = _perkObject;
                 return;
             }
         }
 
         PerkObject perkObject = new PerkObject(perk, 1, true);
+        foundPerkObject = perkObject;
         save.perks.Add(perkObject);
         NewSaveSystem.SaveChanges(save);
+        onPerkUnlocked?.Invoke(this, new UnlockPerkEventArgs { eventPerkObject = foundPerkObject });
 
+    }
+
+    public class UnlockPerkEventArgs : EventArgs 
+    {
+        public PerkObject eventPerkObject;
     }
 }

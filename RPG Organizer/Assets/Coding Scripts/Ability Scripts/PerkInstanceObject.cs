@@ -6,6 +6,7 @@ using TMPro;
 
 public class PerkInstanceObject : MonoBehaviour
 {
+    [Header("Perk Info")]
     [SerializeField] Perk perk;
     PerkObject perkObject;
 
@@ -14,12 +15,10 @@ public class PerkInstanceObject : MonoBehaviour
     [SerializeField] TextMeshProUGUI perkNameTMP;
     [SerializeField] TextMeshProUGUI perkCountTMP;
 
-
-    //reference AbilityInstanceObject Script
-    // [Header("Unlocked Info")]
-    // [SerializeField] GameObject[] abilitiesThatUnlock;
-    // List<GameObject> arrows = new List<GameObject>();
-    // [SerializeField] Transform parentTransformForArrows;
+    [Header("Perk Unlock Info")]
+    [SerializeField] GameObject[] abilitiesThatUnlock;
+    List<GameObject> arrows = new List<GameObject>();
+    [SerializeField] Transform parentTransformForArrows;
 
     private void Start() 
     {
@@ -30,6 +29,66 @@ public class PerkInstanceObject : MonoBehaviour
         }
         borderImage.color = perk.borderColor;
 
+        PerkPanelManager panelManager = FindObjectOfType<PerkPanelManager>();
+        panelManager.onPerkUnlocked += Subscriber_UnlockPerk;
+
+        SetupAbilityTree();
+    }
+
+    private void SetupAbilityTree()
+    {
+        foreach (GameObject perk in abilitiesThatUnlock)
+        {
+            perk.GetComponent<ArrowDirectionTest>().startingObject = this.gameObject;
+            perk.GetComponent<ArrowDirectionTest>().endingObject = perk;
+            perk.GetComponent<ArrowDirectionTest>().UpdateArrow(perk.name);
+            arrows.Add(perk.GetComponent<ArrowDirectionTest>().arrowInstance);
+        }
+
+        foreach (GameObject arrow in arrows)
+        {
+            arrow.SetActive(false);
+        }
+
+        foreach (GameObject perk in abilitiesThatUnlock)
+        {
+            perk.GetComponent<Button>().interactable = false;
+        }
+
+        SaveObject save = NewSaveSystem.FindCurrentSave();
+
+        foreach (PerkObject perkObject in save.perks)
+        {
+            if (perkObject.perk == this.perk)
+            {
+                if (perkObject.unlockedBool)
+                {
+                    foreach (GameObject perk in abilitiesThatUnlock)
+                    {
+                        perk.GetComponent<Button>().interactable = true;
+                    }
+                    foreach (GameObject arrow in arrows)
+                    {
+                        arrow.SetActive(true);
+                    }
+                }
+            }
+        }
+    }
+
+    private void Subscriber_UnlockPerk(object sender, PerkPanelManager.UnlockPerkEventArgs e)
+    {
+        if (e.eventPerkObject.perk == this.perk)
+        {
+            foreach (GameObject perk in abilitiesThatUnlock)
+            {
+                perk.GetComponent<Button>().interactable = true;
+            }
+            foreach (GameObject arrow in arrows)
+            {
+                arrow.SetActive(true);
+            }
+        }
     }
 
     private PerkObject FindPerkObject()

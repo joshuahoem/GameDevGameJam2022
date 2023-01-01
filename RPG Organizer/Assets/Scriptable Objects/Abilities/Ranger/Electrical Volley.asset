@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3a5683874466c64da079d94c09f1a43, type: 3}
+  m_Name: Electrical Volley
+  m_EditorClassIdentifier: 
+  abilityName: Electrical Volley
+  abilitySpriteIcon: {fileID: 21300000, guid: 3ec99a551fa1f504288c4b4b20dbd775, type: 3}
+  borderColor: {r: 0.4015731, g: 0.4245283, b: 0.23429157, a: 0.9490196}
+  costType: 0
+  unlockCost: 2
+  allAbilityLevels:
+  - level: 1
+    upgradeCost: 0
+    magicCost: 5
+    staminaCost: 0
+    range: 0
+    damage: 0
+    magicDamage: 3
+    description: 'Shoots 4 arrows into the ground. All enemies within the boundaries
+      of the 4 arrows are shocked
+
+      Chance to stun (18+)'

@@ -23,41 +23,49 @@ public class LocalButtonManager : MonoBehaviour
 
     [SerializeField] StatEnum statChanging;
 
+    int bonusHealth = 0;
+    int bonusStamina = 0;
+    int bonusMagic = 0;
+    int bonusStrength = 0;
+    int bonusIntelligence = 0;
+    int bonusSpeed = 0;
+
     public void AddAmount()
     {
         save = FindCurrentSave();
+        LoadBaseStatBonus();
 
         switch (statChanging)
         {
             case StatEnum.Health:
-                if ((save.currentHealth + amountToChange) > save.baseHealth) {return;}
+                if ((save.currentHealth + amountToChange) > (save.baseHealth + bonusHealth)) {return;}
                 save.currentHealth += amountToChange;
-                statDisplayObject.text = save.currentHealth + "/" + save.baseHealth;
+                statDisplayObject.text = save.currentHealth + "/" + (save.baseHealth + bonusHealth);
                 break;
             case StatEnum.Stamina:
-                if ((save.currentStamina + amountToChange) > save.baseStamina) {return;}
+                if ((save.currentStamina + amountToChange) > (save.baseStamina + bonusStamina)) {return;}
                 save.currentStamina += amountToChange;
-                statDisplayObject.text = save.currentStamina + "/" + save.baseStamina;
+                statDisplayObject.text = save.currentStamina + "/" + (save.baseStamina + bonusStamina);
                 break;
             case StatEnum.Magic:
-                if ((save.currentMagic + amountToChange) > save.baseMagic) {return;}
+                if ((save.currentMagic + amountToChange) > (save.baseMagic + bonusMagic)) {return;}
                 save.currentMagic += amountToChange;
-                statDisplayObject.text = save.currentMagic + "/" + save.baseMagic;
+                statDisplayObject.text = save.currentMagic + "/" + (save.baseMagic + bonusMagic);
                 break;
             case StatEnum.Strength:
-                if ((save.currentStrength + amountToChange) > save.baseStrength) {return;}
+                if ((save.currentStrength + amountToChange) > (save.baseStrength + bonusStrength)) {return;}
                 save.currentStrength += amountToChange;
-                statDisplayObject.text = save.currentStrength + "/" + save.baseStrength;
+                statDisplayObject.text = save.currentStrength + "/" + (save.baseStrength + bonusStrength);
                 break;
             case StatEnum.Intelligence:
-                if ((save.currentIntelligence + amountToChange) > save.baseIntelligence) {return;}
+                if ((save.currentIntelligence + amountToChange) > (save.baseIntelligence + bonusIntelligence)) {return;}
                 save.currentIntelligence += amountToChange;
-                statDisplayObject.text = save.currentIntelligence + "/" + save.baseIntelligence;
+                statDisplayObject.text = save.currentIntelligence + "/" + (save.baseIntelligence + bonusIntelligence);
                 break;
             case StatEnum.Speed:
-                if ((save.currentSpeed + amountToChange) > save.baseSpeed) {return;}
+                if ((save.currentSpeed + amountToChange) > (save.baseSpeed + bonusSpeed)) {return;}
                 save.currentSpeed += amountToChange;
-                statDisplayObject.text = save.currentSpeed + "/" + save.baseSpeed;
+                statDisplayObject.text = save.currentSpeed + "/" + (save.baseSpeed + bonusSpeed);
                 break;
         }
 
@@ -68,38 +76,39 @@ public class LocalButtonManager : MonoBehaviour
     public void SubtractAmount()
     {
         save = FindCurrentSave();
+        LoadBaseStatBonus();
 
         switch (statChanging)
         {
             case StatEnum.Health:
-                if ((save.currentHealth - amountToChange) < 0) {return;}
+                if (((save.currentHealth + bonusHealth) - amountToChange) < 0) {return;}
                 save.currentHealth -= amountToChange;
-                statDisplayObject.text = save.currentHealth + "/" + save.baseHealth;
+                statDisplayObject.text = save.currentHealth + "/" + (save.baseHealth + bonusHealth);
                 break;
             case StatEnum.Stamina:
-                if ((save.currentStamina - amountToChange) < 0) {return;}
+                if (((save.currentStamina + bonusStamina) - amountToChange) < 0) {return;}
                 save.currentStamina -= amountToChange;
-                statDisplayObject.text = save.currentStamina + "/" + save.baseStamina;
+                statDisplayObject.text = save.currentStamina + "/" + (save.baseStamina + bonusStamina);
                 break;
             case StatEnum.Magic:
-                if ((save.currentMagic - amountToChange) < 0) {return;}
+                if (((save.currentMagic + bonusMagic) - amountToChange) < 0) {return;}
                 save.currentMagic -= amountToChange;
-                statDisplayObject.text = save.currentMagic + "/" + save.baseMagic;
+                statDisplayObject.text = save.currentMagic + "/" + (save.baseMagic + bonusMagic);
                 break;
             case StatEnum.Strength:
-                if ((save.currentStrength - amountToChange) < 0) {return;}
+                if (((save.currentStrength + bonusStrength) - amountToChange) < 0) {return;}
                 save.currentStrength -= amountToChange;
-                statDisplayObject.text = save.currentStrength + "/" + save.baseStrength;
+                statDisplayObject.text = save.currentStrength + "/" + (save.baseStrength + bonusStrength);
                 break;
             case StatEnum.Intelligence:
-                if ((save.currentIntelligence - amountToChange) < 0) {return;}
+                if (((save.currentIntelligence + bonusIntelligence) - amountToChange) < 0) {return;}
                 save.currentIntelligence -= amountToChange;
-                statDisplayObject.text = save.currentIntelligence + "/" + save.baseIntelligence;
+                statDisplayObject.text = save.currentIntelligence + "/" + (save.baseIntelligence + bonusIntelligence);
                 break;
             case StatEnum.Speed:
-                if ((save.currentSpeed - amountToChange) < 0) {return;}
+                if (((save.currentSpeed + bonusSpeed) - amountToChange) < 0) {return;}
                 save.currentSpeed -= amountToChange;
-                statDisplayObject.text = save.currentSpeed + "/" + save.baseSpeed;
+                statDisplayObject.text = save.currentSpeed + "/" + (save.baseSpeed + bonusSpeed);
                 break;
         }
 
@@ -150,6 +159,26 @@ public class LocalButtonManager : MonoBehaviour
         SaveObject newSave = JsonUtility.FromJson<SaveObject>(newSaveString);
         FindObjectOfType<LocalStatDisplay>().save = newSave;
 
+    }
+
+    private void LoadBaseStatBonus()
+    {
+        bonusHealth = 0;
+        bonusStamina = 0;
+        bonusMagic = 0;
+        bonusStrength = 0;
+        bonusIntelligence = 0;
+        bonusSpeed = 0;
+
+        foreach (PerkObject perkObject in save.perks)
+        {
+            bonusHealth += perkObject.perk.bonusHealth * perkObject.count;
+            bonusStamina += perkObject.perk.bonusStamina * perkObject.count;
+            bonusMagic += perkObject.perk.bonusMagic * perkObject.count;
+            bonusStrength += perkObject.perk.bonusStrength * perkObject.count;
+            bonusIntelligence += perkObject.perk.bonusIntelligence * perkObject.count;
+            bonusSpeed += perkObject.perk.bonusSpeed * perkObject.count;
+        }
     }
 
 }

@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class AbilityTreeManager : MonoBehaviour
 {
     SaveObject save;
     [SerializeField] GameObject[] raceAbilityTrees;
     [SerializeField] GameObject[] classAbilityTrees;
+    [SerializeField] GameObject scrollViewRect;
+
 
     string[] raceKeys;
     string[] classKeys;
@@ -61,14 +64,17 @@ public class AbilityTreeManager : MonoBehaviour
         if (saveState.raceAbilityBool)
         {
             raceAbilityDictionary[save.race].SetActive(true);
+            scrollViewRect.GetComponent<ScrollRect>().content = raceAbilityDictionary[save.race].transform as RectTransform;
             titleTMP.text = save.race;
         }
         else if (saveState.classAbilityBool)
         {
             classAbilityDictionary[save.characterClass].SetActive(true);
+            scrollViewRect.GetComponent<ScrollRect>().content = classAbilityDictionary[save.characterClass].transform as RectTransform;
             titleTMP.text = save.characterClass;
         }
 
+        
         
     }
 }

@@ -100,14 +100,14 @@ public class AbilityManager : MonoBehaviour
 
     public void LoadPerks()
     {
+        foreach (GameObject perkObject in perkPrefabList)
+        {
+            Destroy(perkObject);
+        }
+        perkPrefabList.Clear();
+
         foreach (PerkObject perk in save.perks)
         {
-            foreach (GameObject perkObject in perkPrefabList)
-            {
-                Destroy(perkObject);
-            }
-            perkPrefabList.Clear();
-
             GameObject _perk = Instantiate(perkPrefab, transform.position, transform.rotation);
             _perk.transform.SetParent(perkContent, false);
             _perk.GetComponent<PerkInstanceObject>().DisplayPerk(perk);

@@ -6,6 +6,7 @@ using System;
 
 public class AbilityInstanceObject : MonoBehaviour
 {
+    [Header("Ability Info")]
     [SerializeField] Ability abilty;
     public AbilitySaveObject abilitySO;
     [SerializeField] Image abilityImage;
